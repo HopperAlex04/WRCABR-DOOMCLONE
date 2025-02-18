@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd20600t5s5wu"]
+
+[ext_resource type="PackedScene" uid="uid://c3008t25uy5wv" path="res://BlenderImports/DoomCloneTestRoom.glb" id="1_vqclr"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DoomCloneTestRoom" parent="." instance=ExtResource("1_vqclr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29477, 0, -2.42816)

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvxynkce1qfad"]
+
+[ext_resource type="Texture2D" uid="uid://o1avdu7t8ubr" path="res://BlenderImports/DoomCloneTestRoom_b_tekwal.png" id="1_ga21s"]
+
+[resource]
+resource_name = "MATWallTech"
+cull_mode = 2
+albedo_texture = ExtResource("1_ga21s")
+metallic_specular = 0.0

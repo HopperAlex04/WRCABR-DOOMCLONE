@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnvrwloea52ud"]
+
+[ext_resource type="Texture2D" uid="uid://o4ykbh0ql5w" path="res://BlenderImports/DoomCloneTestRoom_b_blck06.png" id="1_6cqrr"]
+
+[resource]
+resource_name = "MATFloorDark"
+cull_mode = 2
+albedo_texture = ExtResource("1_6cqrr")
+metallic_specular = 0.0
