@@ -1,0 +1,10 @@
+res://EnemyBasicGrunt.tscn
+res://Scenes/EnemyBasicGrunt.tscn
+res://Scenes/EnemyBasicGrunt.gd
+res://Scenes/player.tscn
+res://Scenes/WorldT.tscn
+res://Scenes/TestLevel.tscn
+res://Scenes/test_level.gd
+res://Scenes/world_t.gd
+res://Scenes/enemy_testing.tscn
+res://Scenes/enemy_testing.gd

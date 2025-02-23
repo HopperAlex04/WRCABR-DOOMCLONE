@@ -1,0 +1,8 @@
+NavigationRegion3D
+MeshInstance3D
+CollisionShape3D
+NavigationAgent3D
+Timer
+RayCast3D
+AnimatedSprite3D
+CharacterBody3D
