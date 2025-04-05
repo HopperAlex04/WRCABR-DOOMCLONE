@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dd1y5jb6wf0ev"]
 
-[ext_resource type="Script" path="res://Scenes/enemy_testing.gd" id="1_b0xse"]
+[ext_resource type="Script" uid="uid://cwbtgyyf3vqhg" path="res://Scenes/enemy_testing.gd" id="1_b0xse"]
 [ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/EnemyBasicGrunt.tscn" id="2_hlx3a"]
 [ext_resource type="PackedScene" uid="uid://6grf3bmd8lkm" path="res://Scenes/player.tscn" id="3_7isk7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_g600d"]
-vertices = PackedVector3Array(-4.45583, -0.678437, -9.66578, -4.45583, -0.678437, 4.33422, 9.54417, -0.678437, 4.33422, 9.54417, -0.678437, -9.66578)
+vertices = PackedVector3Array(-14.5, 0.75, -14.5, -14.5, 0.75, 14.5, 14.5, 0.75, 14.5, 14.5, 0.75, -14.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 agent_height = 0.0
 
@@ -18,14 +18,14 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 script = ExtResource("1_b0xse")
 
 [node name="Node3D" parent="." instance=ExtResource("2_hlx3a")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.08834, 3.55861, 5.33156)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.08834, 5.75078, 5.33156)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.08834, 2.85687, 5.33156)
 navigation_mesh = SubResource("NavigationMesh_g600d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
-transform = Transform3D(15, 0, 0, 0, 0.5, 0, 0, 0, 15, 2.54417, -1.42844, -2.66578)
+transform = Transform3D(30, 0, 0, 0, 0.5, 0, 0, 0, 30, 0, 0, 0)
 mesh = SubResource("BoxMesh_ybhji")
 skeleton = NodePath("")
 
@@ -35,4 +35,4 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_qvghr")
 
 [node name="Player" parent="." instance=ExtResource("3_7isk7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3203, 2.79222, 8.37514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3203, 5.03037, 8.37514)

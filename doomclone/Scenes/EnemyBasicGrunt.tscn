@@ -23,9 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://dma34m6e8y0sr" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzg1.png" id="21_wbn3d"]
 [ext_resource type="Texture2D" uid="uid://y2j8xut4mrmm" path="res://Sprites/AutoShotgunGuy/SPRITES/asgze1.png" id="22_xi053"]
 [ext_resource type="Texture2D" uid="uid://dq3q48pumar4s" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzf1.png" id="23_wloo7"]
-[ext_resource type="Script" path="res://Scenes/EnemyBasicGrunt.gd" id="24_favsk"]
+[ext_resource type="Script" uid="uid://buc36jrxnnorg" path="res://Scenes/EnemyBasicGrunt.gd" id="24_favsk"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f6x2y"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_01wab"]
+size = Vector3(1, 2, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w5s6p"]
 animations = [{
@@ -118,10 +119,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("21_wbn3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wbn3d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_wbn3d")
 }],
 "loop": true,
 "name": &"hit",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -129,26 +136,32 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("23_wloo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xi053")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
-"speed": 5.0
+"speed": 2.0
 }]
 
-[node name="Node3D" type="CharacterBody3D" groups=["enemies"]]
+[node name="Node3D" type="CharacterBody3D" groups=["Enemy"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.54516, 0)
+motion_mode = 1
 script = ExtResource("24_favsk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_f6x2y")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("BoxShape3D_01wab")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 sprite_frames = SubResource("SpriteFrames_w5s6p")
-animation = &"Walk"
+animation = &"shoot"
+frame = 2
+frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 

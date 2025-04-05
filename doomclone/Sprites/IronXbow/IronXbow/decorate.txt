@@ -1,0 +1,156 @@
+ACTOR IronBoltAmmo : Ammo 10
+{
+  Game Heretic
+  SpawnID 11
+  Inventory.PickupMessage "Iron Bolts"
+  Inventory.Amount 8
+  Inventory.MaxAmount 50
+  Ammo.BackpackAmount 6
+  Ammo.BackpackMaxAmount 100
+  Inventory.Icon "AMM1BOLT"
+  States
+  {
+  Spawn:
+    AMM1 A -1 
+    Stop
+  }
+}
+
+ACTOR IronBoltQuiverAmmo : IronBoltAmmo 12
+{
+  Game Heretic
+  SpawnID 12
+  Inventory.PickupMessage "Quiver of Bolts"
+  Inventory.Amount 15
+  
+  States
+  {
+  Spawn:
+    AMM1 B -1 
+    Stop
+  }
+}
+
+ACTOR IronXBow : HereticWeapon
+{
+  Game Heretic
+  SpawnID 27
+  Weapon.SelectionOrder 1800
+  Weapon.AmmoUse 1
+  Weapon.AmmoGive 16
+  Weapon.AmmoType "IronBoltAmmo"
+  Weapon.SisterWeapon "IronXBowPowered"
+  Weapon.YAdjust 15
+  Inventory.PickupMessage "Iron Crossbow" // "ETHEREAL CROSSBOW"
+  +WEAPON.NOALERT
+  Obituary "%o was punctured by %k's Crossbow"
+  
+  States
+  {
+  Spawn:
+    XBOW Z -1
+    Stop
+  Ready:
+    XBOW A 1 A_WeaponReady
+    Loop
+  Deselect:
+    XBOW A 1 A_Lower
+    Loop
+  Select:
+    XBOW A 1 A_Raise
+    Loop
+  Fire:
+    XBOW B 1 A_PlaySound("BowString")
+    XBOW B 0 A_FireCustomMissile ("Ironbolt", 0)
+    XBOW B 5 A_FireCustomMissile ("IronboltPain", 0, 0)
+    XBOW CDEFG 4
+    XBOW A 5 A_ReFire
+    goto Ready
+  }
+}
+
+ACTOR IronXBowPowered : IronXBow
+{
+  Game Heretic
+  SpawnID 27
+  Weapon.SelectionOrder 1800
+  Weapon.AmmoUse 1
+  Weapon.AmmoGive 16
+  Weapon.AmmoType "IronBoltAmmo"
+  Weapon.SisterWeapon "IronXBow"
+  Weapon.YAdjust 15
+  Inventory.PickupMessage "Iron Crossbow" // "ETHEREAL CROSSBOW"
+  +WEAPON.POWERED_UP
+  +WEAPON.NOALERT
+  Obituary "%o should know that %k's is not a licensed acupuncturist"
+  
+  States
+  {
+  Fire:
+    XBOW B 1 A_TakeInventory("IronBoltAmmo", 1)
+  Hold:
+    XBOW H 1 A_PlaySound("BowString")
+    XBOW H 0 A_FireCustomMissile ("Ironbolt", 0, 0)
+    XBOW H 3 A_FireCustomMissile ("IronboltPain", 0, 0)
+    XBOW IJA 4
+    XBOW A 1 A_ReFire
+    goto Ready
+  }
+}
+
+actor Ironbolt : FastProjectile
+{
+  height 1
+  radius 1
+  damage (random(4,13)*9)
+  speed 36
+  seesound "misc/shot"
+  deathsound "misc/shotx"
+  PROJECTILE
+  -ACTIVATEIMPACT 
+  -ACTIVATEPCROSS
+  +THRUGHOST
+  +DONTREFLECT
+  +NOEXTREMEDEATH
+  scale 0.5
+  
+  states
+  {
+  Spawn:
+    XBLT A -1
+  Death:
+    XBLT A 160
+  XDeath:
+    XBLT A 4
+    stop
+  }
+}
+
+actor IronboltPain : FastProjectile
+{
+  height 1
+  radius 1
+  damage 0
+  speed 36
+  seesound "misc/shot"
+  deathsound "misc/shotx"
+  PROJECTILE
+  -ACTIVATEIMPACT 
+  -ACTIVATEPCROSS
+  +THRUGHOST
+  +DONTREFLECT
+  +NOEXTREMEDEATH
+  +RIPPER
+  scale 0.5
+  
+  states
+  {
+  Spawn:
+    TNT1 A 8
+  Death:
+    TNT1 A 0
+    stop
+  }
+}
+
+

@@ -1,10 +1,9 @@
-res://EnemyBasicGrunt.tscn
-res://Scenes/EnemyBasicGrunt.tscn
-res://Scenes/EnemyBasicGrunt.gd
 res://Scenes/player.tscn
-res://Scenes/WorldT.tscn
-res://Scenes/TestLevel.tscn
-res://Scenes/test_level.gd
-res://Scenes/world_t.gd
-res://Scenes/enemy_testing.tscn
+res://Scenes/crossbow.tscn
+res://Scenes/UI.tscn
+res://Scenes/world.tscn
+res://Scenes/e_1m_1_01.tscn
+res://Scenes/player.gd
+res://Scenes/EnemyBasicGrunt.gd
+res://Scenes/EnemyBasicGrunt.tscn
 res://Scenes/enemy_testing.gd
