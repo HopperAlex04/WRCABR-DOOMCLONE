@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dd1y5jb6wf0ev"]
 
 [ext_resource type="Script" uid="uid://cwbtgyyf3vqhg" path="res://Scenes/enemy_testing.gd" id="1_b0xse"]
-[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/EnemyBasicGrunt.tscn" id="2_hlx3a"]
+[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/Seeker.tscn" id="2_hlx3a"]
 [ext_resource type="PackedScene" uid="uid://6grf3bmd8lkm" path="res://Scenes/player.tscn" id="3_7isk7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_g600d"]

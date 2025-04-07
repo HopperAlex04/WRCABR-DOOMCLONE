@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cwbtgyyf3vqhg" path="res://Scenes/enemy_testing.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://6grf3bmd8lkm" path="res://Scenes/player.tscn" id="2_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://doaxgugqhflh2" path="res://Scenes/e_1m_1_01.tscn" id="3_8j60k"]
-[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/EnemyBasicGrunt.tscn" id="4_8j60k"]
+[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/Seeker.tscn" id="4_8j60k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_go701"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -42,4 +42,10 @@ navigation_mesh = SubResource("NavigationMesh_8j60k")
 [node name="E1M1-01" parent="NavigationRegion3D" instance=ExtResource("3_8j60k")]
 
 [node name="Node3D" parent="." instance=ExtResource("4_8j60k")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.10958, 1.99279, -8.5863)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.10958, 1.23533, -8.5863)
+
+[node name="Node3D2" parent="." instance=ExtResource("4_8j60k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.7529, 1.27899, -8.5863)
+
+[node name="Node3D3" parent="." instance=ExtResource("4_8j60k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.0369, 1.25299, -8.5863)

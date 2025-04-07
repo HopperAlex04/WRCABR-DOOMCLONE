@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://oobprtlyrjce" path="res://Scenes/TestLevel.tscn" id="1_sdm2t"]
 [ext_resource type="Script" uid="uid://ctoq4r3revyjp" path="res://Scenes/world_t.gd" id="1_xmr7n"]
 [ext_resource type="PackedScene" uid="uid://6grf3bmd8lkm" path="res://Scenes/player.tscn" id="2_5qu4u"]
-[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/EnemyBasicGrunt.tscn" id="3_45rnu"]
+[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/Seeker.tscn" id="3_45rnu"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2spw7"]
 vertices = PackedVector3Array(-17.4317, 5.5, -18.184, -15.4317, 5.5, -18.184, -15.1817, 5.5, -20.434, -17.4317, 5.5, -27.434, -6.68169, 5.5, -20.434, -6.43169, 5.5, -13.684, -4.68169, 5.5, -13.684, -4.68169, 5.5, -27.434, -17.1817, 0.5, -18.434, -15.6817, 0.5, -18.434, -15.4317, 0.5, -20.684, -17.1817, 0.5, -27.184, -6.43169, 0.5, -20.684, -4.93169, 0.5, -27.184, -6.18169, 0.5, -13.434, -4.93169, 0.5, -13.434, -17.1817, 0.5, 2.31596, -15.6817, 0.5, 2.31596, -17.4317, 5.5, 2.06596, -15.4317, 5.5, 2.06596, -4.43169, 5.5, -11.684, -6.68169, 5.5, -11.684, 9.06831, 5.5, 2.56596, 9.06831, 5.5, -11.684, -11.9317, 5.5, 2.56596, -11.9317, 5.5, -11.684, -4.68169, 0.5, -11.434, -6.43169, 0.5, -11.434, 9.06831, 0.5, 2.31596, 9.06831, 0.5, -11.434, -11.6817, 0.5, 2.31596, -11.6817, 0.5, -11.434, -15.1817, 5.5, 4.31596, -17.4317, 5.5, 13.566, -9.43169, 5.5, 13.566, -9.43169, 5.5, 4.31596, -15.4317, 0.5, 4.56596, -17.1817, 0.5, 13.316, -9.68169, 0.5, 13.316, -9.68169, 0.5, 4.56596)

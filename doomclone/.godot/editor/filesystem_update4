@@ -1,9 +1,7 @@
+res://Scenes/world.tscn
 res://Scenes/player.tscn
 res://Scenes/crossbow.tscn
 res://Scenes/UI.tscn
-res://Scenes/world.tscn
 res://Scenes/e_1m_1_01.tscn
-res://Scenes/player.gd
-res://Scenes/EnemyBasicGrunt.gd
 res://Scenes/EnemyBasicGrunt.tscn
-res://Scenes/enemy_testing.gd
+res://Scenes/EnemyBasicGrunt.gd
