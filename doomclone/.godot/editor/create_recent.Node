@@ -1,3 +1,5 @@
+Timer
+RigidBody3D
 CollisionShape3D
 StaticBody3D
 Label
@@ -7,8 +9,6 @@ CanvasLayer
 NavigationRegion3D
 OmniLight3D
 MeshInstance3D
-Timer
 RayCast3D
 Node3D
 AnimatedSprite2D
-NavigationAgent3D

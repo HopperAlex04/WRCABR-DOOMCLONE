@@ -6,6 +6,8 @@ var max_speed = 11
 var mouse_sensitivity = 0.002
 var health = 100
 
+signal interact_pressed
+
 #gun variables
 var bolts = 100
 func _ready():
@@ -25,6 +27,8 @@ func get_input():
 	if Input.is_action_pressed("strafe_right"):
 		input_dir += global_transform.basis.x
 		#print("rrecieved")
+	if Input.is_action_pressed("interact"):
+		emit_signal("interact_pressed")
 	return input_dir
 		
 	

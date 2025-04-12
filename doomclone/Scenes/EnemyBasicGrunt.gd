@@ -49,10 +49,15 @@ func death():
 		$AnimatedSprite3D.play("Die")
 	
 func shoot():
-	print("freshCall")
+	#print("freshCall")
 	set_process(false)
 	set_physics_process(false)
 	$AnimatedSprite3D.play("shoot")
+	await $AnimatedSprite3D.animation_finished
+	print(get_tree().get_first_node_in_group("Player"))
+	print($RayCast3D.get_collider())
+	if $RayCast3D.is_colliding() and $RayCast3D.get_collider() == get_tree().get_first_node_in_group("Player"):
+		print("hit")
 	#await $AnimatedSprite3D.animation_finished
 	#$Timer.start()
 	#set_process(true)

@@ -146,7 +146,7 @@ animations = [{
 }]
 
 [node name="Node3D" type="CharacterBody3D" groups=["Enemy"]]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.54516, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 motion_mode = 1
 script = ExtResource("24_favsk")
 
@@ -167,6 +167,9 @@ frame_progress = 1.0
 wait_time = 3.0
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189617, 0)
+target_position = Vector3(0, 0, -20)
+debug_shape_custom_color = Color(0.85159, 0.204878, 0.171332, 1)
 
 [connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
