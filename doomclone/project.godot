@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="DoomClone"
-run/main_scene="res://Scenes/enemy_testing.tscn"
+run/main_scene="res://Scenes/CheckDump/enemy_testing.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [global_group]
 

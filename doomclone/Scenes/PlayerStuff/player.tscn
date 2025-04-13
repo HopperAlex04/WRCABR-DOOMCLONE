@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://6grf3bmd8lkm"]
+
+[ext_resource type="Script" uid="uid://bdcrk7ovim5rj" path="res://Scenes/PlayerStuff/player.gd" id="1_ho30x"]
+[ext_resource type="PackedScene" uid="uid://bumo86yjpxoe2" path="res://Scenes/PlayerStuff/crossbow.tscn" id="2_dc31m"]
+[ext_resource type="PackedScene" uid="uid://5ro2wqltm38d" path="res://Scenes/PlayerStuff/temps.tscn" id="4_vgqql"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
+size = Vector3(1, 2, 1)
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_ho30x")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55349, 0)
+
+[node name="Gun" type="Node3D" parent="Pivot"]
+
+[node name="Pistol" parent="Pivot/Gun" instance=ExtResource("2_dc31m")]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+
+[node name="Temps" parent="Pivot" instance=ExtResource("4_vgqql")]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["PlayerCollision"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_6t5aa")
+
+[node name="health" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 573.0
+offset_right = 130.0
+offset_bottom = 647.0
+
+[node name="dam_tpfilterTime" type="Timer" parent="."]
+
+[connection signal="timeout" from="dam_tpfilterTime" to="." method="_on_dam_tpfilter_time_timeout"]

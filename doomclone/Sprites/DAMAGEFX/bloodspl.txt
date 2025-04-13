@@ -1,0 +1,195 @@
+#library "BLOODSPL"
+#include "zcommon.acs"
+
+str B_Splat[27] = {"SSPLAT0", "SSPLAT1", "SSPLAT2", "SSPLAT3", "SSPLAT4", "SSPLAT5", "SSPLAT6", "SSPLAT7", "SSPLAT8","SSPLAT9",
+					"SSPLAT10", "SSPLAT11", "SSPLAT12", "SSPLAT13", "SSPLAT14", "SSPLAT15", "SSPLAT16",
+					"SSPLAT17", "SSPLAT18", "SSPLAT19", "SSPLAT20", "SSPLAT21", "SSPLAT22", "SSPLAT23",
+					"SSPLAT24", "SSPLAT25", "SSPLAT26"}; //blood splat graphic array
+
+int newHealth; //health before delay
+int oldHealth; //health after delay
+int H_Diff;	//difference between the two
+int minBlood;
+int maxBlood;
+int bloodSpeed;
+
+script "HB_LOOP" ENTER //Heart beat script
+{
+	int hp = GetCVar("hb_starthp");
+	H_Beat(hp);
+	delay(GetCVar("hb_delay"));
+	restart;
+}
+
+script "FD_LOOP" ENTER //main screen fade script
+{
+	F_Loop();		
+	delay(1);
+	restart;
+}
+
+script "BS_LOOP" ENTER	//main blood splat script
+{
+	//Thing_ChangeTID(0, 1000 + PlayerNumber());
+	int ds_count = 0; //death splat count, always starts at zero on script start
+	while(true)
+	{
+		if(GetCVar("bsfdDefaults"))
+		{
+			SetCVar("bsfdDefaults", FALSE);
+			BSFD_Defaults();
+		}
+			
+		minBlood = GetCVar("bs_minamount");
+		maxBlood = GetCVar("bs_maxamount");
+		bloodSpeed = GetCVar("bs_speed");
+		
+		if(minBlood > maxBlood)	//stops the user from setting minimum amount to more than maximum
+			SetCVar("bs_minamount", maxBlood);
+		
+		int s_count = 0;
+		if(GetCVar("bs_enable")) //blood splats
+		{
+			oldHealth = GetActorProperty(0,APROP_HEALTH);
+			delay(1);
+			newHealth = GetActorProperty(0,APROP_HEALTH);
+			
+			
+			if(newHealth < oldHealth)
+				{
+					H_Diff = oldHealth - newHealth;
+					while(s_count++ < random(minBlood, maxBlood))
+					{
+						Splat(BloodOp());	
+						delay(bloodSpeed);
+					}
+				}	
+		}
+		
+		if(GetCVar("ds_enable"))	//death splats
+		{
+			if(GetActorProperty(0,APROP_HEALTH) < 1)
+					while(ds_count++ < GetCVar("ds_amount"))
+						{
+							Splat(1.0);
+							delay(bloodSpeed);
+						}
+		}
+		
+		if(GetCVar("bs_devmode"))	//devmode... or last damage recieved display
+			{
+				SetFont("CONFONT");
+				HudMessage(s:"Last Damage: ", d:H_Diff; HUDMSG_PLAIN, 666, CR_GREEN, 1.0, 1.0, 0.1, 1);
+			}
+			
+		if(!GetCVar("bs_enable")) //Runs if blood splats are not enabled, the delay stops the script from crashing.
+			delay(1);
+	}		
+}
+
+/*
+script "BSFD_RESPAWN" RESPAWN
+{
+  Thing_ChangeTID(1000+PlayerNumber(),0);
+  Thing_ChangeTID(0,1000+PlayerNumber());
+}
+*/
+
+function void H_Beat(int hp)	//Heart Beat
+{
+	if(GetCVar("hb_enable"))
+		if(GetActorProperty(0,APROP_HEALTH) <= hp && GetActorProperty(0,APROP_HEALTH) > 0)
+			PlaySound(0, "hbeat", CHAN_BODY, 1.0, FALSE, ATTN_NONE);
+}
+
+
+function int BloodOp(void)	//set blood opacity based on last damage recieved
+{
+	int blood_op = 0.7;
+	int h = H_Diff;
+	
+	
+	if(h <= 5 && h > 1)
+		blood_op = 0.2;
+	else if(h <= 10 && h > 5)
+		blood_op =  0.3;
+	else if(h <= 20 && h > 10)
+		blood_op =  0.4;
+	else if(h <= 30 && h > 20)
+		blood_op = 0.5;
+	else if(h <= 40 && h > 30)
+		blood_op =  0.6;
+	else if(h <= 50 && h > 40)
+		blood_op = 0.7;
+	else
+		blood_op = 0.8;
+		
+	if(GetCVar("bs_alpha") == 1)
+		blood_op = blood_op / 2;
+	else if(GetCVar("bs_alpha") == 2)
+		blood_op = blood_op / 3;
+		
+	return(blood_op);
+}	
+
+function void F_Loop(void)	//screen fade effect
+{
+	int phealth = GetActorProperty(0,APROP_HEALTH);
+	
+	if(phealth > 50 || !GetCVar("fd_enable"))
+		FadeTo(255,255,255,0.0,1.0);
+		
+	if (GetCVar("fd_enable"))
+	{
+		if(phealth <= 50 && phealth > 40)
+			FadeTo(128,128,128,0.2,1.0);
+		if(phealth <= 40 && phealth > 30)
+			FadeTo(128,128,128,0.25,1.0); 
+		if(phealth <=30 && phealth > 20)
+			FadeTo(255,0,0,0.3,1.0);
+		if(phealth <= 20 && phealth > 10)
+			FadeTo(255,0,0,0.4,1.0);
+		if(phealth <= 10 && phealth > 1)
+			FadeTo(255,0,0,0.5,1.0);
+		if(phealth <= 1)
+			FadeTo(255,0,0,0.6,1.0);
+	}
+}
+
+function int rand(void)	//random function for blood splats
+{
+	int val;
+	val = random(0,26);
+	return val;
+}
+function int b_rand(void) //random function for HudMessage position
+{
+	int bval;
+	bval = random(0.0, 1.0);
+	return bval;
+}
+
+function void Splat(int op) //blood splats
+{
+	Setfont(B_Splat[rand()]);
+	HudMessage(s:"A";HUDMSG_FADEOUT | HUDMSG_ALPHA,0,CR_WHITE, b_rand(),b_rand(),1.0, 3.0, op);
+}
+
+function void BSFD_Defaults(void) //Sets cvars to their default values
+{
+	SetCVar("fd_enable", TRUE);
+	SetCVar("bs_enable", TRUE);
+	SetCVar("ds_enable", TRUE);
+	SetCVar("hb_enable", TRUE);
+	SetCVar("bs_devmode", FALSE);
+	SetCVar("bs_alpha", 0);
+	SetCVar("ds_amount", 20);
+	SetCVar("bs_speed", 2);
+	SetCVar("bs_minamount", 2);
+	SetCVar("bs_maxamount", 5);
+	SetCVar("hb_starthp", 30);
+	SetCVar("hb_delay", 30);
+}
+
+
+

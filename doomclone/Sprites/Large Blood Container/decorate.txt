@@ -1,0 +1,17 @@
+//LARGE BLOOD CONTAINER
+
+ACTOR LargeBloodContainer : Health 555
+{
+	//$Category Deathball items
+  +FLOATBOB
+  Inventory.Amount 150 //ALMOST THE SAME AS SOUL SPHERE
+  Inventory.PickupMessage "Picked up a large blood container."
+  inventory.pickupsound "misc/bttlup"
+  States
+  {
+  Spawn:
+    MLBL A -1
+    Stop
+  }
+}
+

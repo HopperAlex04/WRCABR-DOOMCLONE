@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ro4r65id3nqh"]
+
+[ext_resource type="Script" uid="uid://cv4wxjny7yxaw" path="res://Scenes/World/ammo_pickup.gd" id="1_2bs2a"]
+[ext_resource type="Texture2D" uid="uid://dmcfu5tgmxa7a" path="res://Sprites/ElectricBoltBundle/SPRITES/meara0.png" id="2_agpmo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkks5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_agpmo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nxu3p"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="AmmoPickup" type="Node3D"]
+script = ExtResource("1_2bs2a")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hkks5")
+
+[node name="Area3D" type="Area3D" parent="AnimatedSprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatedSprite3D/Area3D"]
+shape = SubResource("BoxShape3D_nxu3p")
+
+[connection signal="body_entered" from="AnimatedSprite3D/Area3D" to="." method="_on_area_3d_body_entered"]

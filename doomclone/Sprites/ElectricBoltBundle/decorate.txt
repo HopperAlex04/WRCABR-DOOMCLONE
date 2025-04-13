@@ -1,0 +1,13 @@
+ACTOR ElectricBoltBundle : ElectricBolts 27307
+{
+  Inventory.Amount 10
+  Inventory.MaxAmount 50
+  Inventory.PickupMessage "You picked up the electric bolt bundle."
+  Scale 1.2
+  States
+  {
+  Spawn:
+    MEAR A -1
+    Stop
+  }
+}

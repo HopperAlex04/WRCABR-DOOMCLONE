@@ -1,0 +1,7 @@
+Submitted:CaptainManiac
+Sprites:BadMojo
+ACS by:CaptainManiac,BadMojo
+Idea by:CaptainManiac
+Special Thanks:Blue Shadow,MaxED,Scifista42,Buuu342
+Ideabase:The Fading and Blood on Screen effect from The Saboteur's regeneration
+system

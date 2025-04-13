@@ -1,0 +1,351 @@
+[gd_scene load_steps=18 format=3 uid="uid://i2u8ve6a10co"]
+
+[ext_resource type="Script" uid="uid://cwbtgyyf3vqhg" path="res://Scenes/World/enemy_testing.gd" id="1_adcqc"]
+[ext_resource type="PackedScene" uid="uid://6grf3bmd8lkm" path="res://Scenes/PlayerStuff/player.tscn" id="2_7staa"]
+[ext_resource type="PackedScene" uid="uid://doaxgugqhflh2" path="res://Scenes/CheckDump/e_1m_1_01.tscn" id="3_fcotr"]
+[ext_resource type="PackedScene" uid="uid://dx5gxsxsta5s1" path="res://Scenes/Enemies/Seeker.tscn" id="4_y0d6x"]
+[ext_resource type="PackedScene" uid="uid://c0g6yjrjsebpo" path="res://Scenes/World/door_01.tscn" id="5_ugf0j"]
+[ext_resource type="Script" uid="uid://l0133nyft8an" path="res://Scenes/World/InteractDoor.gd" id="6_0ph6x"]
+[ext_resource type="PackedScene" uid="uid://caidk88pdjqnf" path="res://Scenes/Enemies/Charger.tscn" id="7_7staa"]
+[ext_resource type="PackedScene" uid="uid://dlkygepluhiw1" path="res://Scenes/World/HealthPot.tscn" id="8_fcotr"]
+[ext_resource type="PackedScene" uid="uid://ro4r65id3nqh" path="res://Scenes/World/ammo_pickup.tscn" id="9_y0d6x"]
+[ext_resource type="PackedScene" uid="uid://g6v55vlamowg" path="res://Scenes/Enemies/Boss.tscn" id="10_ugf0j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_go701"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_5a7ea"]
+sky_material = SubResource("ProceduralSkyMaterial_go701")
+
+[sub_resource type="Environment" id="Environment_8j60k"]
+background_mode = 2
+sky = SubResource("Sky_5a7ea")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8j60k"]
+vertices = PackedVector3Array(41.775, 0.5, -20.75, 44.025, 0.5, -21, 44.025, 0.5, -27.5, 41.775, 0.5, -27.75, 14.775, 0.5, 1.75, 22.525, 0.5, 1.75, 15.025, 0.5, 2.5, 22.025, 0.5, 2.5, 41.775, 0.5, -44.25, -1.97501, 0.5, -44.25, -1.97501, 0.5, 1.75, 41.775, 0.5, 1.75, 58.025, 0.5, -21, 68.775, 0.5, -16.75, 69.275, 0.5, -22.5, 57.025, 0.5, -27.5, 70.525, 0.5, -15.75, 91.775, 0.5, -15, 91.775, 0.5, -22.5, 93.275, 0.5, -6, 93.525, 0.5, -14.75, 70.525, 0.5, -6, 116.775, 0.5, -6, 116.775, 0.5, -14.75, 11.525, 0.5, 24.5, 17.775, 0.5, 23.75, 17.275, 0.5, 23, 15.025, 0.5, 3.5, 10.025, 0.5, 22.25, 17.275, 0.5, 14.25, 10.025, 0.5, 15.25, 117.025, 0.5, 98, 129.775, 0.5, 98.25, 130.025, 0.5, 97.5, 117.025, 0.5, 11.25, 159.525, 0.5, 97.5, 159.775, 0.5, 99.75, 182.275, 0.5, 99.75, 182.525, 0.5, 97.5, 199.775, 0.5, 11.25, 199.775, 0.5, 97.5, 17.275, 0.5, 34, 23.275, 0.5, 33, 44.775, 0.5, 68, 46.775, 0.5, 67.75, 46.775, 0.5, 62.5, 44.775, 0.5, 62.25, 11.525, 0.5, 79.25, 4.77499, 0.5, 79.25, 17.275, 0.5, 35.5, 24.775, 0.5, 35.5, 5.02499, 0.5, 81.25, 11.275, 0.5, 81.25, -2.47501, 0.5, 35.5, -2.47501, 0.5, 79.25, 44.775, 0.5, 35.5, 44.775, 0.5, 79.25, 76.025, 0.5, 60.75, 94.775, 0.5, 61, 94.775, 0.5, 50, 76.025, 0.5, 50, 74.025, 0.5, 62.5, 74.025, 0.5, 67.75, 75.775, 0.5, 67.75, 75.775, 0.5, 62.5, 76.025, 0.5, 69.5, 94.775, 0.5, 69.25, 76.025, 0.5, 97.25, 94.775, 0.5, 97, 5.02499, 0.5, 86, 11.275, 0.5, 86, 11.525, 0.5, 88, 4.77499, 0.5, 88, -2.47501, 0.5, 109.25, 18.775, 0.5, 109.25, -2.47501, 0.5, 88, 18.775, 0.5, 88, 97.025, 0.5, 110.25, 97.025, 0.5, 98.75, 95.025, 0.5, 98.75, 76.025, 0.5, 110.25, 116.775, 0.5, 98.75, 114.775, 0.5, 98.75, 114.775, 0.5, 110.25, 129.775, 0.5, 110.25, 159.775, 0.5, 199, 182.275, 0.5, 199, 282.525, 0.5, 151.25, 284.525, 0.5, 151.25, 284.525, 0.5, 126.25, 282.275, 0.5, 153, 253.525, 0.5, 126.25, 253.525, 0.5, 152.75, 375.025, 0.5, 151.25, 375.025, 0.5, 126.25, 377.025, 0.5, 151.25, 377.275, 0.5, 153.5, 407.275, 0.5, 153.5, 407.275, 0.5, 126.25, -264.975, 0.5, 234, -166.475, 0.5, 234, -166.475, 0.5, 136.25, -264.975, 0.5, 136.25, 253.525, 0.5, 199.25, 282.275, 0.5, 199.25, 377.275, 0.5, 237.75, 407.275, 0.5, 237.75, 182.275, 0.5, 201, 159.775, 0.5, 201, 158.025, 0.5, 201.25, 158.275, 0.5, 222.5, 183.775, 0.5, 222.5, 184.025, 0.5, 201.25, 253.275, 0.5, 201.25, 251.525, 0.5, 201.25, 251.525, 0.5, 222.5, 253.275, 0.5, 222.5, 253.525, 0.5, 223.5, 282.275, 0.5, 223.25, 282.275, 0.5, 201, 282.525, 0.5, 222.5, 284.275, 0.5, 222.5, 284.275, 0.5, 201.25, 109.775, 0.5, 222.75, 111.525, 0.5, 222.5, 111.275, 0.5, 201.25, 84.775, 0.5, 201.25, 84.775, 0.5, 224.75, 109.775, 0.5, 224.75, 357.275, 0.5, 222.5, 357.275, 0.5, 201.25, 282.525, 0.5, 223.75, 253.525, 0.5, 297.5, 357.275, 0.5, 297.5, 357.275, 0.5, 223.75, 84.775, 0.5, 284, 109.775, 0.5, 284, -166.475, 0.5, 236, -164.225, 0.5, 236.25, -264.975, 0.5, 356.75, -164.225, 0.5, 356.75, -41.475, 0.5, 282, -39.725, 0.5, 282, -39.225, 0.5, 237, -40.475, 0.5, 236.25, -41.475, 0.5, 356.75, 82.775, 0.5, 331, 83.525, 0.5, 286, 407.525, 0.5, 240, 377.275, 0.5, 326.25, 507.275, 0.5, 326.25, 507.275, 0.5, 240, 84.775, 0.5, 332, 84.775, 0.5, 334, 109.775, 0.5, 334, 109.775, 0.5, 332, 111.775, 0.5, 287, 84.775, 0.5, 286, 111.275, 0.5, 332, 109.775, 0.5, 286, 210.525, 0.5, 381.75, 273.775, 0.5, 381.75, 273.775, 0.5, 336.25, 210.025, 0.5, 336.25, 84.775, 0.5, 472.5, 109.775, 0.5, 472.5, 275.775, 0.5, 381.75, 276.025, 0.5, 383.5, 309.775, 0.5, 383.25, 309.775, 0.5, 336.25, 276.025, 0.5, 531.75, 309.775, 0.5, 531.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(0, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 5), PackedInt32Array(8, 3, 9), PackedInt32Array(9, 3, 4), PackedInt32Array(9, 4, 10), PackedInt32Array(0, 11, 5), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(2, 15, 1), PackedInt32Array(1, 15, 12), PackedInt32Array(13, 14, 16), PackedInt32Array(16, 14, 18), PackedInt32Array(16, 18, 17), PackedInt32Array(20, 19, 17), PackedInt32Array(17, 19, 21), PackedInt32Array(17, 21, 16), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 19), PackedInt32Array(26, 25, 24), PackedInt32Array(27, 6, 7), PackedInt32Array(24, 28, 26), PackedInt32Array(26, 28, 30), PackedInt32Array(26, 30, 29), PackedInt32Array(7, 29, 27), PackedInt32Array(27, 29, 30), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 38), PackedInt32Array(33, 34, 35), PackedInt32Array(35, 34, 39), PackedInt32Array(39, 38, 35), PackedInt32Array(39, 40, 38), PackedInt32Array(42, 41, 25), PackedInt32Array(25, 41, 24), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(43, 47, 46), PackedInt32Array(46, 47, 48), PackedInt32Array(41, 42, 49), PackedInt32Array(49, 42, 50), PackedInt32Array(51, 48, 52), PackedInt32Array(52, 48, 47), PackedInt32Array(54, 53, 48), PackedInt32Array(48, 53, 49), PackedInt32Array(48, 49, 46), PackedInt32Array(49, 50, 46), PackedInt32Array(50, 55, 46), PackedInt32Array(43, 56, 47), PackedInt32Array(60, 59, 57), PackedInt32Array(57, 59, 58), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(64, 57, 63), PackedInt32Array(63, 57, 65), PackedInt32Array(65, 57, 58), PackedInt32Array(65, 58, 66), PackedInt32Array(45, 61, 44), PackedInt32Array(44, 61, 62), PackedInt32Array(66, 68, 65), PackedInt32Array(65, 68, 67), PackedInt32Array(51, 52, 69), PackedInt32Array(69, 52, 70), PackedInt32Array(70, 71, 69), PackedInt32Array(69, 71, 72), PackedInt32Array(71, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(73, 75, 72), PackedInt32Array(71, 76, 74), PackedInt32Array(79, 78, 77), PackedInt32Array(67, 68, 79), PackedInt32Array(67, 79, 80), PackedInt32Array(80, 79, 77), PackedInt32Array(83, 82, 81), PackedInt32Array(81, 31, 83), PackedInt32Array(83, 31, 32), PackedInt32Array(83, 32, 84), PackedInt32Array(78, 82, 77), PackedInt32Array(77, 82, 83), PackedInt32Array(36, 37, 85), PackedInt32Array(85, 37, 86), PackedInt32Array(89, 88, 87), PackedInt32Array(87, 90, 89), PackedInt32Array(89, 90, 92), PackedInt32Array(89, 92, 91), PackedInt32Array(89, 94, 88), PackedInt32Array(88, 94, 93), PackedInt32Array(95, 93, 94), PackedInt32Array(95, 94, 96), PackedInt32Array(96, 94, 97), PackedInt32Array(97, 94, 98), PackedInt32Array(102, 101, 99), PackedInt32Array(99, 101, 100), PackedInt32Array(104, 103, 90), PackedInt32Array(90, 103, 92), PackedInt32Array(96, 97, 105), PackedInt32Array(105, 97, 106), PackedInt32Array(112, 111, 107), PackedInt32Array(107, 111, 108), PackedInt32Array(108, 111, 109), PackedInt32Array(109, 111, 110), PackedInt32Array(108, 85, 107), PackedInt32Array(107, 85, 86), PackedInt32Array(116, 115, 113), PackedInt32Array(113, 115, 114), PackedInt32Array(116, 113, 117), PackedInt32Array(117, 113, 103), PackedInt32Array(117, 103, 119), PackedInt32Array(117, 119, 118), PackedInt32Array(122, 121, 120), PackedInt32Array(120, 118, 122), PackedInt32Array(122, 118, 119), PackedInt32Array(103, 104, 119), PackedInt32Array(124, 123, 125), PackedInt32Array(125, 123, 126), PackedInt32Array(126, 123, 127), PackedInt32Array(123, 128, 127), PackedInt32Array(125, 109, 124), PackedInt32Array(124, 109, 110), PackedInt32Array(114, 115, 112), PackedInt32Array(112, 115, 111), PackedInt32Array(122, 130, 121), PackedInt32Array(121, 130, 129), PackedInt32Array(118, 131, 117), PackedInt32Array(117, 131, 132), PackedInt32Array(134, 133, 131), PackedInt32Array(131, 133, 132), PackedInt32Array(127, 128, 135), PackedInt32Array(135, 128, 136), PackedInt32Array(99, 100, 137), PackedInt32Array(137, 138, 99), PackedInt32Array(99, 138, 140), PackedInt32Array(99, 140, 139), PackedInt32Array(142, 141, 143), PackedInt32Array(143, 141, 144), PackedInt32Array(144, 141, 138), PackedInt32Array(145, 140, 141), PackedInt32Array(141, 140, 138), PackedInt32Array(146, 142, 147), PackedInt32Array(147, 142, 143), PackedInt32Array(106, 148, 105), PackedInt32Array(105, 148, 149), PackedInt32Array(151, 150, 148), PackedInt32Array(148, 150, 149), PackedInt32Array(155, 154, 152), PackedInt32Array(152, 154, 153), PackedInt32Array(157, 156, 147), PackedInt32Array(147, 156, 146), PackedInt32Array(146, 156, 155), PackedInt32Array(155, 156, 158), PackedInt32Array(157, 135, 159), PackedInt32Array(159, 135, 136), PackedInt32Array(157, 159, 156), PackedInt32Array(155, 152, 146), PackedInt32Array(161, 160, 162), PackedInt32Array(162, 160, 163), PackedInt32Array(156, 163, 158), PackedInt32Array(158, 163, 160), PackedInt32Array(165, 164, 154), PackedInt32Array(154, 164, 153), PackedInt32Array(167, 166, 168), PackedInt32Array(168, 166, 169), PackedInt32Array(169, 166, 162), PackedInt32Array(166, 161, 162), PackedInt32Array(170, 167, 171), PackedInt32Array(171, 167, 168)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ukr8"]
+size = Vector3(20, 2, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcotr"]
+size = Vector3(15, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ugf0j"]
+size = Vector3(1, 1, 30)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_adcqc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8j60k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_7staa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.431046, -1)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0243537, 0)
+navigation_mesh = SubResource("NavigationMesh_8j60k")
+
+[node name="E1M1-01" parent="NavigationRegion3D" instance=ExtResource("3_fcotr")]
+
+[node name="Door01" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.99263, -4.12394, 3.50354)
+script = ExtResource("6_0ph6x")
+
+[node name="Door06" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.03, -4.12394, 77.6846)
+script = ExtResource("6_0ph6x")
+
+[node name="Door07" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.03, -4.12394, 57.5885)
+script = ExtResource("6_0ph6x")
+
+[node name="Door08" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 135.081, -4.12394, 76.8836)
+script = ExtResource("6_0ph6x")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.0766668, 0, -0.997057, 0, 1, 0, 0.997057, 0, 0.0766668, 46.7097, 0.501555, -26.3394)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_5ukr8")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.111, 0.501555, 99.4814)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.455551, 0, 0)
+shape = SubResource("BoxShape3D_5ukr8")
+
+[node name="Seeker3" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 91.9274, 1.23533, 52.8565)
+
+[node name="Seeker4" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 86.9761, 1.23533, 52.8565)
+
+[node name="Seeker5" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 83.4275, 1.23533, 52.8565)
+
+[node name="Seeker6" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 78.4763, 1.23533, 52.8565)
+
+[node name="Doortrigger1" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doortrigger1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3457, 0.530096, 0)
+shape = SubResource("BoxShape3D_fcotr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="Door03" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.3834, -4.34231, 61.1222)
+script = ExtResource("6_0ph6x")
+
+[node name="Door02" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98728, -4.12394, 80.9729)
+script = ExtResource("6_0ph6x")
+
+[node name="Door04" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(-5.68248e-08, 0, 1, 0, 1, 0, -1.3, 0, -4.37114e-08, 284.499, -4.34231, 221.682)
+script = ExtResource("6_0ph6x")
+
+[node name="Door05" parent="." instance=ExtResource("5_ugf0j")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 74.4762, -4.34231, 388.97)
+script = ExtResource("6_0ph6x")
+
+[node name="Charger2" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 96.6362, 1.14435, 395.45)
+
+[node name="Charger3" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 101.136, 1.14435, 404.212)
+
+[node name="Charger4" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 89.8199, 1.14435, 401.54)
+
+[node name="Charger5" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 96.6362, 1.14435, 402.856)
+
+[node name="Charger6" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 92.4326, 1.14435, 397.907)
+
+[node name="Charger7" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 1.95396, 0.426641, 0, -0.426641, 1.95396, 105.743, 1.14435, 395.45)
+
+[node name="Charger8" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 96.6362, 1.14435, 400.597)
+
+[node name="Charger9" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.189531, 1.14435, 101.971)
+
+[node name="Charger10" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.00591, 1.14435, 103.286)
+
+[node name="Charger11" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.80229, 1.14435, 98.3378)
+
+[node name="Charger12" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 1.95396, 0.426641, 0, -0.426641, 1.95396, 16.1124, 1.14435, 95.8807)
+
+[node name="Charger13" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.00591, 1.14435, 101.028)
+
+[node name="Doortrigger2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5537, -0.290852, 337.398)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doortrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000289917, 1.36085, 13.267)
+shape = SubResource("BoxShape3D_fcotr")
+
+[node name="Doortrigger3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4797, 0.58127, 59.833)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Doortrigger3"]
+shape = SubResource("BoxShape3D_ugf0j")
+
+[node name="HealthPot2" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 98.0326, 0.405075, 363.634)
+
+[node name="HealthPot3" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 100.026, 0.405075, 363.634)
+
+[node name="HealthPot4" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 102.833, 0.405075, 363.634)
+
+[node name="HealthPot5" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 95.4455, 0.405075, 363.634)
+
+[node name="HealthPot6" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 92.5684, 0.405075, 363.634)
+
+[node name="HealthPot7" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 90.0568, 0.405075, 363.634)
+
+[node name="HealthPot8" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 98.0326, 0.405075, 108.23)
+
+[node name="HealthPot9" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 100.026, 0.405075, 108.23)
+
+[node name="HealthPot10" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 102.833, 0.405075, 108.23)
+
+[node name="HealthPot11" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 95.4455, 0.405075, 108.23)
+
+[node name="HealthPot12" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 92.5684, 0.405075, 108.23)
+
+[node name="HealthPot13" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 90.0568, 0.405075, 108.23)
+
+[node name="HealthPot14" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 113.262, 0.405075, 108.23)
+
+[node name="HealthPot15" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 115.256, 0.405075, 108.23)
+
+[node name="HealthPot16" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 118.062, 0.405075, 108.23)
+
+[node name="HealthPot17" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 110.675, 0.405075, 108.23)
+
+[node name="HealthPot18" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 107.798, 0.405075, 108.23)
+
+[node name="HealthPot19" parent="." instance=ExtResource("8_fcotr")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 105.286, 0.405075, 108.23)
+
+[node name="AmmoPickup2" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 81.3559, 0.198163, 94.4549)
+
+[node name="AmmoPickup3" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 81.3559, 0.198163, 92.5936)
+
+[node name="AmmoPickup4" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 81.3559, 0.198163, 90.7902)
+
+[node name="AmmoPickup5" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 81.3559, 0.198163, 88.9289)
+
+[node name="AmmoPickup6" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 85.0003, 0.198163, 94.4549)
+
+[node name="AmmoPickup7" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 85.0003, 0.198163, 92.5936)
+
+[node name="AmmoPickup8" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 85.0003, 0.198163, 90.7902)
+
+[node name="AmmoPickup9" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 85.0003, 0.198163, 88.9289)
+
+[node name="AmmoPickup10" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 88.995, 0.198163, 94.4549)
+
+[node name="AmmoPickup11" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 88.995, 0.198163, 92.5936)
+
+[node name="AmmoPickup12" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 88.995, 0.198163, 90.7902)
+
+[node name="AmmoPickup13" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 88.995, 0.198163, 88.9289)
+
+[node name="AmmoPickup14" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 162.24, 0.198163, 132.335)
+
+[node name="AmmoPickup15" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 162.24, 0.198163, 130.473)
+
+[node name="AmmoPickup16" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 162.24, 0.198163, 128.67)
+
+[node name="AmmoPickup17" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 162.24, 0.198163, 126.809)
+
+[node name="AmmoPickup18" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 180.282, 0.198163, 132.335)
+
+[node name="AmmoPickup19" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 180.282, 0.198163, 130.473)
+
+[node name="AmmoPickup20" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 180.282, 0.198163, 128.67)
+
+[node name="AmmoPickup21" parent="." instance=ExtResource("9_y0d6x")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 1, 180.282, 0.198163, 126.809)
+
+[node name="Boss" parent="." instance=ExtResource("10_ugf0j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 127.694, 1.14435, 68.2425)
+
+[connection signal="interact_pressed" from="Player" to="Door01" method="_on_player_interact_pressed"]
+[connection signal="body_entered" from="Area3D" to="Player" method="_on_player_entered"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="player_hit" from="Seeker3" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker4" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker5" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker6" to="Player" method="_on_seeker_player_hit"]
+[connection signal="body_entered" from="Doortrigger1" to="." method="_on_doortrigger_1_body_entered"]
+[connection signal="player_hit" from="Charger2" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger3" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger4" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger5" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger6" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger7" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger8" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger9" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger10" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger11" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger12" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger13" to="Player" method="_on_charger_player_hit"]
+[connection signal="body_entered" from="Doortrigger2" to="." method="_on_doortrigger_2_body_entered"]
+[connection signal="body_entered" from="Doortrigger3" to="." method="_on_doortrigger_3_body_entered"]
+[connection signal="pickup" from="HealthPot2" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot3" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot4" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot5" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot6" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot7" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot8" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot9" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot10" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot11" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot12" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot13" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot14" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot15" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot16" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot17" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot18" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="HealthPot19" to="Player" method="_on_health_pot_pickup"]
+[connection signal="pickup" from="AmmoPickup2" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup3" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup4" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup5" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup6" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup7" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup8" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup9" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup10" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup11" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup12" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup13" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup14" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup15" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup16" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup17" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup18" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup19" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup20" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="pickup" from="AmmoPickup21" to="Player" method="_on_ammo_pickup_pickup"]
+[connection signal="player_hit" from="Boss" to="Player" method="_on_boss_player_hit"]

@@ -1,0 +1,65 @@
+AddOptionMenu "OptionsMenu"{
+	StaticText " "
+	StaticText "Blood splats and other effects"
+	SubMenu "Damage Effects Settings", "DMGFXSettings"
+}
+
+
+OptionValue "DFI"
+{
+	2, "Default"
+	1, "Fast"
+	0, "Instant"
+}
+OptionValue "BSOP"
+{
+	0, "Default"
+	1, "Low"
+	2, "Very Low"
+}
+OptionValue "YesNo"
+{
+	0, "No"
+	1, "Yes"
+}
+
+
+
+Optionmenu "DMGFXSettings"
+{
+	StaticText		" "
+	Title 			"Damage Screen Effect Settings"
+	StaticText 		" "
+	Statictext		"This menu will allow you to set the effects to fit your needs."
+	StaticText 		" "
+	Option 			"Screen Fading:","fd_enable","OnOff"
+	Option 			"Blood Splats:","bs_enable","OnOff"
+	Option 			"Death Splats:","ds_enable","OnOff"
+	option			"Heart Beat:","hb_enable","OnOff"
+	StaticText 		" "
+	StaticText 		"How many blood splats do you want to see when you die?"
+	Slider 			"Amount of Death Splats:","ds_amount",0,50,5
+	StaticText 		" "
+	StaticText 		"How many blood splats do you want to see when you take damage?"
+	Slider 			"Minimum amount of blood splats:","bs_minamount",0,50,5
+	Slider 			"Maximum amount of blood splats:","bs_maxamount",0,50,5
+	StaticText 		" "
+	StaticText	 	"How fast do you want your blood to appear?"
+	Option 			"Blood splat speed:","bs_speed","DFI"
+	StaticText 		" "
+	StaticText		"How thick do you want your blood?"
+	Option			"Blood opacity:","bs_alpha","BSOP"
+	StaticText		" "
+	StaticText 		"How fast is your heart?"
+	Slider 			"Heart beat delay (lower = faster):","hb_delay",10,50,5
+	Slider 			"Amount of health that triggers heartbeat:","hb_starthp",1,100,5
+	StaticText		" "
+	StaticText 		"Debugging options:"
+	Option 			"Show last damage recieved:","bs_devmode","OnOff"
+	StaticText 		" "
+	StaticText 		" "
+	Option			"Set default values (close menu to apply): ","bsfdDefaults","YesNo"
+}
+
+
+

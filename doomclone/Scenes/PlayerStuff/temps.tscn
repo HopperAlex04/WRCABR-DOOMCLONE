@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://5ro2wqltm38d"]
+
+[node name="Temps" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Damage" type="ColorRect" parent="CanvasLayer/Control"]
+self_modulate = Color(0.596078, 1, 1, 0.333333)
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 656.0
+color = Color(0.911009, 0.279597, 0.236872, 1)
+
+[node name="TP" type="ColorRect" parent="CanvasLayer/Control"]
+self_modulate = Color(1, 1, 1, 0.333333)
+layout_mode = 0
+offset_right = 1163.0
+offset_bottom = 656.0
+mouse_filter = 1
+color = Color(0.172549, 0.0392157, 0.196078, 0.333333)

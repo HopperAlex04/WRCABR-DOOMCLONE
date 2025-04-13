@@ -1,0 +1,6 @@
+Submitted: Lucario
+Decorate: Lucario
+Sounds: Raven Software
+Sprites: Raven Software
+Sprite Edit: Lucario
+Idea Base: Small blood container.

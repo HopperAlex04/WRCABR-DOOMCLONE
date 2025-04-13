@@ -1,0 +1,178 @@
+[gd_scene load_steps=27 format=3 uid="uid://caidk88pdjqnf"]
+
+[ext_resource type="Script" uid="uid://blmxrsvuffmji" path="res://Scenes/Enemies/charger.gd" id="1_nou43"]
+[ext_resource type="Texture2D" uid="uid://li8kvluh6kyu" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzh0.png" id="2_wndrn"]
+[ext_resource type="Texture2D" uid="uid://bj378aquo7ock" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzi0.png" id="3_5l1w1"]
+[ext_resource type="Texture2D" uid="uid://cdripjyw5wodu" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzj0.png" id="4_iofpq"]
+[ext_resource type="Texture2D" uid="uid://dhbc2id7csxjh" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzk0.png" id="5_lt2cq"]
+[ext_resource type="Texture2D" uid="uid://c4gnfmuuy105e" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzl0.png" id="6_6hfek"]
+[ext_resource type="Texture2D" uid="uid://c3s3xurx3txl8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzm0.png" id="7_saubl"]
+[ext_resource type="Texture2D" uid="uid://bakt8g0niypa8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzn0.png" id="8_v78ry"]
+[ext_resource type="Texture2D" uid="uid://vurwyo2645hb" path="res://Sprites/AutoShotgunGuy/SPRITES/asgza1.png" id="9_qb32f"]
+[ext_resource type="Texture2D" uid="uid://pm5tp2hucc17" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzb1.png" id="10_1in7s"]
+[ext_resource type="Texture2D" uid="uid://5fkggpbqva8i" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzc1.png" id="11_qrxmp"]
+[ext_resource type="Texture2D" uid="uid://bc32gi5yvsis6" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzd1.png" id="12_ppj2r"]
+[ext_resource type="Texture2D" uid="uid://bj0u0g40ew4i1" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzo0.png" id="13_rc6g1"]
+[ext_resource type="Texture2D" uid="uid://bgktuy10qwgr8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzp0.png" id="14_o6tfl"]
+[ext_resource type="Texture2D" uid="uid://bmlsfremnw7f8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzq0.png" id="15_2olbv"]
+[ext_resource type="Texture2D" uid="uid://blvhdkxx3mci8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzr0.png" id="16_3g1xf"]
+[ext_resource type="Texture2D" uid="uid://osaqs48jhpdh" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzs0.png" id="17_va826"]
+[ext_resource type="Texture2D" uid="uid://mtn1ocwxedk6" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzt0.png" id="18_xbmrp"]
+[ext_resource type="Texture2D" uid="uid://b2te0i801w6tv" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzu0.png" id="19_k7jqv"]
+[ext_resource type="Texture2D" uid="uid://domwqq23m0amb" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzv0.png" id="20_ybxq5"]
+[ext_resource type="Texture2D" uid="uid://kwgimfuhwuc" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzw0.png" id="21_tmlv0"]
+[ext_resource type="Texture2D" uid="uid://dma34m6e8y0sr" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzg1.png" id="22_nw0hp"]
+[ext_resource type="Texture2D" uid="uid://y2j8xut4mrmm" path="res://Sprites/AutoShotgunGuy/SPRITES/asgze1.png" id="23_je8am"]
+[ext_resource type="Texture2D" uid="uid://dq3q48pumar4s" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzf1.png" id="24_5doig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_01wab"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5s6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wndrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5l1w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iofpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lt2cq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6hfek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_saubl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v78ry")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qb32f")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qb32f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1in7s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qrxmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ppj2r")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_rc6g1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o6tfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2olbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3g1xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_va826")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xbmrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_k7jqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_ybxq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tmlv0")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_nw0hp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nw0hp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nw0hp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_nw0hp")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_je8am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_5doig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_je8am")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 2.0
+}]
+
+[node name="Node3D" type="CharacterBody3D" groups=["Enemy"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+motion_mode = 1
+script = ExtResource("1_nou43")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("BoxShape3D_01wab")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_w5s6p")
+animation = &"shoot"
+frame = 2
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189617, 0)
+target_position = Vector3(0, 0, -20)
+debug_shape_custom_color = Color(0.85159, 0.204878, 0.171332, 1)
+
+[node name="ChargeTime" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]

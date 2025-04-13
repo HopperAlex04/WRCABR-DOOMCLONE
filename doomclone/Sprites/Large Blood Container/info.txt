@@ -1,0 +1,6 @@
+Name: Large Blood Container
+Type: Health
+Palette: PNG
+Summon: LargeBloodContainer
+Use type: Instant
+Duration: Instant

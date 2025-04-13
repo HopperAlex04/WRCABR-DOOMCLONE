@@ -1,0 +1,8 @@
+Name: Electric Bolt Bundle
+Type: Ammo
+Palette: Other
+Summon: ElectricBoltBundle
+Use Type: Instant
+Duration: Instant
+Added States: No
+ACS: No

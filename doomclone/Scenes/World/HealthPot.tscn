@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlkygepluhiw1"]
+
+[ext_resource type="Texture2D" uid="uid://ci8yut2j8xwdr" path="res://Sprites/Large Blood Container/SPRITES/mlbla0.png" id="1_b3dbb"]
+[ext_resource type="Script" uid="uid://d4asfb2paljxl" path="res://Scenes/World/health_pot.gd" id="1_brubh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_auc58"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b3dbb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n42wx"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_brubh")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_auc58")
+
+[node name="Area3D" type="Area3D" parent="AnimatedSprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatedSprite3D/Area3D"]
+shape = SubResource("BoxShape3D_n42wx")
+
+[connection signal="body_entered" from="AnimatedSprite3D/Area3D" to="." method="_on_area_3d_body_entered"]

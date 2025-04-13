@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://bumo86yjpxoe2"]
+
+[ext_resource type="Script" uid="uid://d1o86exgqvj5b" path="res://Scenes/PlayerStuff/Gun.gd" id="1_oalue"]
+[ext_resource type="Texture2D" uid="uid://crx3u1ugefg1n" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowa0.png" id="2_dfhe8"]
+[ext_resource type="Texture2D" uid="uid://dehydv7i8qtud" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowb0.png" id="3_oiafr"]
+[ext_resource type="Texture2D" uid="uid://o2u70ahwi61t" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowc0.png" id="4_urquj"]
+[ext_resource type="Texture2D" uid="uid://cv76njlufklca" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowd0.png" id="5_f0ps3"]
+[ext_resource type="Texture2D" uid="uid://b8wpacq8lguxi" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowe0.png" id="6_3xp0r"]
+[ext_resource type="Texture2D" uid="uid://xqdm0hto4ay" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowf0.png" id="7_prkrb"]
+[ext_resource type="Texture2D" uid="uid://bmu4oegupsdqp" path="res://Sprites/IronXbow/IronXbow/SPRITES/xbowg0.png" id="8_6a3ut"]
+[ext_resource type="Script" uid="uid://cn1x75n1e3hk8" path="res://Scenes/PlayerStuff/ammo.gd" id="9_c7e76"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pasge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dfhe8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oiafr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_urquj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f0ps3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3xp0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_prkrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6a3ut")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8tvrr"]
+
+[node name="Pistol" type="Node3D"]
+script = ExtResource("1_oalue")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(-212, 40)
+rotation = 3.14159
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_pasge")
+animation = &"Shoot"
+frame = 5
+frame_progress = 1.0
+speed_scale = 3.0
+centered = false
+flip_h = true
+flip_v = true
+
+[node name="GunRays" type="Node3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="GunRays"]
+target_position = Vector3(0, 0, -200)
+
+[node name="Ammo" type="Label" parent="."]
+offset_left = 958.0
+offset_top = 571.0
+offset_right = 1152.0
+offset_bottom = 647.0
+label_settings = SubResource("LabelSettings_8tvrr")
+script = ExtResource("9_c7e76")
+
+[connection signal="boltShot" from="." to="Ammo" method="_on_pistol_bolt_shot"]
