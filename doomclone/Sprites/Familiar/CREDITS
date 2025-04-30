@@ -1,0 +1,24 @@
+Information:
+Name: Familiar and Great Familiar
+Difficulty: Easy
+Connections: None
+Summon: Familiar, GFamiliar
+Melee: No
+Distance: Projectile
+Type: Demon/Magical
+Brightmaps: No
+Actor modification: No
+ACS: No
+
+Credits:
+Code: Rifleman, Gothic, DeVloek
+Sounds: Mageslayer, Heretic, Hexen, alonsotm
+Sprites: Hexen
+Sprite Edit: Rifleman
+Idea Base: The Phoenix and its ressurection
+
+Description:
+The Familiar works similar to the Afrit, except it will sometimes 'blink' before firing and can sacrifice its body to enter a worthy corpse. When the host is killed, it'll spawn a new body for the Familiar. There is 5% chance a Familiar will become a Greater Familiar through resurrection
+The Great Familiar also has the hability to assist BOSS monsters by making them invulnerable until they die. They also can possess and buff living monsters, giving them more health and making them more aggresive. When the possesed monster dies, it will respawn.
+
+NOTE: This monster requires other monsters to have a "Raise" state, which Hexen monsters don't have by default.

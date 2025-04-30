@@ -2,7 +2,7 @@ extends CharacterBody3D
 @onready var nav = $NavigationAgent3D
 
 var speed = 7
-var health = 20
+var health = 100
 var dead = false
 var shots = 3
 var shooting = false
@@ -42,7 +42,6 @@ func update_target_location(target_location):
 	
 func take_damage(dmg_amount):
 	health -= dmg_amount
-	$AnimatedSprite3D.play("hit")
 	if health <= 0:
 		death()
 	
@@ -53,6 +52,8 @@ func death():
 	$CollisionShape3D.disabled = true
 	dead = true
 	$AnimatedSprite3D.play("explode")
+	await $AnimatedSprite3D.animation_finished
+	self.queue_free()
 	
 func shoot():
 	#print("freshCall")
@@ -80,9 +81,9 @@ func _on_animated_sprite_3d_animation_finished() -> void:
 
 
 func _on_shot_clock_timeout() -> void:
-	shots -= 1
-	shooting = true
-	if !dead:
+	if !dead && !charging:
+		shots -= 1
+		shooting = true
 		shoot()
 	if shots == 0:
 		charge()
@@ -91,4 +92,5 @@ func _on_shot_clock_timeout() -> void:
 
 
 func _on_charge_time_timeout() -> void:
-	speed = 7 # Replace with function body.
+	speed = 7
+	charging = false # Replace with function body.

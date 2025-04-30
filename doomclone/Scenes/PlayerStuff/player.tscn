@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://6grf3bmd8lkm"]
+[gd_scene load_steps=7 format=3 uid="uid://6grf3bmd8lkm"]
 
 [ext_resource type="Script" uid="uid://bdcrk7ovim5rj" path="res://Scenes/PlayerStuff/player.gd" id="1_ho30x"]
 [ext_resource type="PackedScene" uid="uid://bumo86yjpxoe2" path="res://Scenes/PlayerStuff/crossbow.tscn" id="2_dc31m"]
 [ext_resource type="PackedScene" uid="uid://5ro2wqltm38d" path="res://Scenes/PlayerStuff/temps.tscn" id="4_vgqql"]
+[ext_resource type="FontFile" uid="uid://bmruihnrbku4h" path="res://Fonts/Pixelify_Sans/static/PixelifySans-Bold.ttf" id="4_wh7px"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t5aa"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_swllh"]
+font = ExtResource("4_wh7px")
+font_size = 32
+font_color = Color(0.65098, 0.0117647, 0.0980392, 1)
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_ho30x")
@@ -32,6 +38,7 @@ offset_left = -1.0
 offset_top = 573.0
 offset_right = 130.0
 offset_bottom = 647.0
+label_settings = SubResource("LabelSettings_swllh")
 
 [node name="dam_tpfilterTime" type="Timer" parent="."]
 

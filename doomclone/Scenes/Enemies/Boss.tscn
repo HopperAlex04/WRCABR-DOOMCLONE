@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://g6v55vlamowg"]
+[gd_scene load_steps=35 format=3 uid="uid://g6v55vlamowg"]
 
 [ext_resource type="Script" uid="uid://bb4yrshrnvq2o" path="res://Scenes/Enemies/boss.gd" id="1_lud50"]
 [ext_resource type="Texture2D" uid="uid://li8kvluh6kyu" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzh0.png" id="2_bihn7"]
@@ -9,21 +9,29 @@
 [ext_resource type="Texture2D" uid="uid://c3s3xurx3txl8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzm0.png" id="7_axmuf"]
 [ext_resource type="Texture2D" uid="uid://bakt8g0niypa8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzn0.png" id="8_jcjet"]
 [ext_resource type="Texture2D" uid="uid://vurwyo2645hb" path="res://Sprites/AutoShotgunGuy/SPRITES/asgza1.png" id="9_7vi7o"]
-[ext_resource type="Texture2D" uid="uid://pm5tp2hucc17" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzb1.png" id="10_6t4lf"]
-[ext_resource type="Texture2D" uid="uid://5fkggpbqva8i" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzc1.png" id="11_0i8us"]
-[ext_resource type="Texture2D" uid="uid://bc32gi5yvsis6" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzd1.png" id="12_drx7w"]
-[ext_resource type="Texture2D" uid="uid://bj0u0g40ew4i1" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzo0.png" id="13_qt0ff"]
-[ext_resource type="Texture2D" uid="uid://bgktuy10qwgr8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzp0.png" id="14_ljb4q"]
-[ext_resource type="Texture2D" uid="uid://bmlsfremnw7f8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzq0.png" id="15_iqhqa"]
-[ext_resource type="Texture2D" uid="uid://blvhdkxx3mci8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzr0.png" id="16_rr1jp"]
-[ext_resource type="Texture2D" uid="uid://osaqs48jhpdh" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzs0.png" id="17_n5t46"]
-[ext_resource type="Texture2D" uid="uid://mtn1ocwxedk6" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzt0.png" id="18_exf10"]
-[ext_resource type="Texture2D" uid="uid://b2te0i801w6tv" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzu0.png" id="19_78tso"]
-[ext_resource type="Texture2D" uid="uid://domwqq23m0amb" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzv0.png" id="20_o2vah"]
-[ext_resource type="Texture2D" uid="uid://kwgimfuhwuc" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzw0.png" id="21_0wx5u"]
+[ext_resource type="Texture2D" uid="uid://b4ftiue87bqch" path="res://Sprites/InfernoDemon/Sprites/INDMA1.png" id="10_khck3"]
+[ext_resource type="Texture2D" uid="uid://csdlmahu5cqfh" path="res://Sprites/InfernoDemon/Sprites/INDMB1.png" id="11_r7xtj"]
+[ext_resource type="Texture2D" uid="uid://e5ufweyolbpw" path="res://Sprites/InfernoDemon/Sprites/INDMC1.png" id="12_8r6hl"]
+[ext_resource type="Texture2D" uid="uid://bmb7d5ac1lgwn" path="res://Sprites/InfernoDemon/Sprites/INDMD1.png" id="13_axmuf"]
+[ext_resource type="Texture2D" uid="uid://bqsv27bgotk4h" path="res://Sprites/InfernoDemon/Sprites/INDML0.png" id="14_7vi7o"]
+[ext_resource type="Texture2D" uid="uid://dt47o50sjyj61" path="res://Sprites/InfernoDemon/Sprites/INDMM0.png" id="15_6t4lf"]
+[ext_resource type="Texture2D" uid="uid://bj4q5iuh57f1x" path="res://Sprites/InfernoDemon/Sprites/INDMN0.png" id="16_0i8us"]
+[ext_resource type="Texture2D" uid="uid://bal2drdrk7rn2" path="res://Sprites/InfernoDemon/Sprites/INDMO0.png" id="17_drx7w"]
+[ext_resource type="Texture2D" uid="uid://bkhehv14l2ya2" path="res://Sprites/InfernoDemon/Sprites/INDMP0.png" id="18_qt0ff"]
+[ext_resource type="Texture2D" uid="uid://d1ck2n87t5tux" path="res://Sprites/InfernoDemon/Sprites/INDMS0.png" id="19_ljb4q"]
+[ext_resource type="Texture2D" uid="uid://0tar4g30q24r" path="res://Sprites/InfernoDemon/Sprites/NKXPA0.png" id="20_iqhqa"]
+[ext_resource type="Texture2D" uid="uid://b4ks0cn1gem3n" path="res://Sprites/InfernoDemon/Sprites/NKXPB0.png" id="21_rr1jp"]
 [ext_resource type="Texture2D" uid="uid://dma34m6e8y0sr" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzg1.png" id="22_1qny2"]
-[ext_resource type="Texture2D" uid="uid://y2j8xut4mrmm" path="res://Sprites/AutoShotgunGuy/SPRITES/asgze1.png" id="23_nmcfo"]
-[ext_resource type="Texture2D" uid="uid://dq3q48pumar4s" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzf1.png" id="24_x3crs"]
+[ext_resource type="Texture2D" uid="uid://b6ncwhao072hx" path="res://Sprites/InfernoDemon/Sprites/NKXPC0.png" id="22_n5t46"]
+[ext_resource type="Texture2D" uid="uid://bb1yhtlxc8grg" path="res://Sprites/InfernoDemon/Sprites/NKXPD0.png" id="23_exf10"]
+[ext_resource type="Texture2D" uid="uid://bsk8pytr00nin" path="res://Sprites/InfernoDemon/Sprites/NKXPE0.png" id="24_78tso"]
+[ext_resource type="Texture2D" uid="uid://cqqauul7cqo5b" path="res://Sprites/InfernoDemon/Sprites/INDME1.png" id="24_jcjet"]
+[ext_resource type="Texture2D" uid="uid://ds2oiv54qy0a3" path="res://Sprites/InfernoDemon/Sprites/INDMF1.png" id="25_7vi7o"]
+[ext_resource type="Texture2D" uid="uid://cm03g0wbr8cv2" path="res://Sprites/InfernoDemon/Sprites/NKXPF0.png" id="25_o2vah"]
+[ext_resource type="Texture2D" uid="uid://xbt4tn5gw6w8" path="res://Sprites/InfernoDemon/Sprites/NKXPG0.png" id="26_0wx5u"]
+[ext_resource type="Texture2D" uid="uid://rv30ofrmfswr" path="res://Sprites/InfernoDemon/Sprites/INDMG1.png" id="26_6t4lf"]
+[ext_resource type="Texture2D" uid="uid://cet3sfy66uqhf" path="res://Sprites/InfernoDemon/Sprites/INDMH1.png" id="27_0i8us"]
+[ext_resource type="Texture2D" uid="uid://mnfmgy2norxd" path="res://Sprites/InfernoDemon/Sprites/NKXPH0.png" id="27_1qny2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_01wab"]
 size = Vector3(1, 2, 1)
@@ -66,16 +74,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_7vi7o")
+"texture": ExtResource("10_khck3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_6t4lf")
+"texture": ExtResource("11_r7xtj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_0i8us")
+"texture": ExtResource("12_8r6hl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_drx7w")
+"texture": ExtResource("13_axmuf")
 }],
 "loop": true,
 "name": &"Walk",
@@ -83,31 +91,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_qt0ff")
+"texture": ExtResource("14_7vi7o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_ljb4q")
+"texture": ExtResource("15_6t4lf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_iqhqa")
+"texture": ExtResource("16_0i8us")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_rr1jp")
+"texture": ExtResource("17_drx7w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_n5t46")
+"texture": ExtResource("18_qt0ff")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_exf10")
+"texture": ExtResource("19_ljb4q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_78tso")
+"texture": ExtResource("20_iqhqa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_o2vah")
+"texture": ExtResource("21_rr1jp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_0wx5u")
+"texture": ExtResource("22_n5t46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_exf10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_78tso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_o2vah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_0wx5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_1qny2")
 }],
 "loop": false,
 "name": &"explode",
@@ -132,13 +155,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_nmcfo")
+"texture": ExtResource("24_jcjet")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_x3crs")
+"texture": ExtResource("25_7vi7o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_nmcfo")
+"texture": ExtResource("26_6t4lf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_0i8us")
 }],
 "loop": false,
 "name": &"shoot",
@@ -157,11 +183,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("BoxShape3D_01wab")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.57294, 0)
 sprite_frames = SubResource("SpriteFrames_w5s6p")
-animation = &"shoot"
-frame = 2
-frame_progress = 1.0
+animation = &"Walk"
 
 [node name="ShotClock" type="Timer" parent="."]
 

@@ -1,5 +1,4 @@
-res://Scenes/Enemies/Boss.tscn
-res://Scenes/Enemies/boss.gd
-res://Scenes/PlayerStuff/player.gd
 res://Scenes/World/world.tscn
-res://Scenes/World/enemy_testing.gd
+res://Scenes/Enemies/Boss.tscn
+res://Scenes/Enemies/Charger.tscn
+res://Scenes/Enemies/Seeker.tscn

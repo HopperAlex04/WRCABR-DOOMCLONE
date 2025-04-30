@@ -97,6 +97,54 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 83.4275, 1.23533, 52.8565)
 [node name="Seeker6" parent="." instance=ExtResource("4_y0d6x")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 78.4763, 1.23533, 52.8565)
 
+[node name="Seeker7" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 225.695, 1.23533, 374.021)
+
+[node name="Seeker8" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 220.744, 1.23533, 374.021)
+
+[node name="Seeker9" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 217.195, 1.23533, 374.021)
+
+[node name="Seeker10" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 212.244, 1.23533, 374.021)
+
+[node name="Seeker11" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 223.159, 1.23533, 347.754)
+
+[node name="Seeker12" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 218.207, 1.23533, 347.754)
+
+[node name="Seeker13" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 214.659, 1.23533, 347.754)
+
+[node name="Seeker14" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 209.708, 1.23533, 347.754)
+
+[node name="Seeker15" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 296.851, 1.23533, 526.455)
+
+[node name="Seeker16" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 291.9, 1.23533, 526.455)
+
+[node name="Seeker17" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 288.351, 1.23533, 526.455)
+
+[node name="Seeker18" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 283.4, 1.23533, 526.455)
+
+[node name="Seeker19" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 296.851, 1.23533, 520.192)
+
+[node name="Seeker20" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 291.9, 1.23533, 520.192)
+
+[node name="Seeker21" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 288.351, 1.23533, 520.192)
+
+[node name="Seeker22" parent="." instance=ExtResource("4_y0d6x")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 283.4, 1.23533, 520.192)
+
 [node name="Doortrigger1" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Doortrigger1"]
@@ -157,6 +205,24 @@ transform = Transform3D(2, 0, 0, 0, 1.95396, 0.426641, 0, -0.426641, 1.95396, 16
 
 [node name="Charger13" parent="." instance=ExtResource("7_7staa")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.00591, 1.14435, 101.028)
+
+[node name="Charger14" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 285.925, 1.14435, 503.966)
+
+[node name="Charger15" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 1.95396, 0.426641, 0, -0.426641, 1.95396, 299.235, 1.14435, 501.509)
+
+[node name="Charger16" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 290.129, 1.14435, 506.656)
+
+[node name="Charger17" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 280.564, 1.14435, 493.477)
+
+[node name="Charger18" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 1.95396, 0.426641, 0, -0.426641, 1.95396, 293.874, 1.14435, 491.02)
+
+[node name="Charger19" parent="." instance=ExtResource("7_7staa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 284.768, 1.14435, 496.168)
 
 [node name="Doortrigger2" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5537, -0.290852, 337.398)
@@ -295,7 +361,22 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 127.694, 1.14435, 68.2425)
 [connection signal="player_hit" from="Seeker4" to="Player" method="_on_seeker_player_hit"]
 [connection signal="player_hit" from="Seeker5" to="Player" method="_on_seeker_player_hit"]
 [connection signal="player_hit" from="Seeker6" to="Player" method="_on_seeker_player_hit"]
-[connection signal="body_entered" from="Doortrigger1" to="." method="_on_doortrigger_1_body_entered"]
+[connection signal="player_hit" from="Seeker7" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker8" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker9" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker10" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker11" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker12" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker13" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker14" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker15" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker16" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker17" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker18" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker19" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker20" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker21" to="Player" method="_on_seeker_player_hit"]
+[connection signal="player_hit" from="Seeker22" to="Player" method="_on_seeker_player_hit"]
 [connection signal="player_hit" from="Charger2" to="Player" method="_on_charger_player_hit"]
 [connection signal="player_hit" from="Charger3" to="Player" method="_on_charger_player_hit"]
 [connection signal="player_hit" from="Charger4" to="Player" method="_on_charger_player_hit"]
@@ -308,6 +389,12 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 127.694, 1.14435, 68.2425)
 [connection signal="player_hit" from="Charger11" to="Player" method="_on_charger_player_hit"]
 [connection signal="player_hit" from="Charger12" to="Player" method="_on_charger_player_hit"]
 [connection signal="player_hit" from="Charger13" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger14" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger15" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger16" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger17" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger18" to="Player" method="_on_charger_player_hit"]
+[connection signal="player_hit" from="Charger19" to="Player" method="_on_charger_player_hit"]
 [connection signal="body_entered" from="Doortrigger2" to="." method="_on_doortrigger_2_body_entered"]
 [connection signal="body_entered" from="Doortrigger3" to="." method="_on_doortrigger_3_body_entered"]
 [connection signal="pickup" from="HealthPot2" to="Player" method="_on_health_pot_pickup"]

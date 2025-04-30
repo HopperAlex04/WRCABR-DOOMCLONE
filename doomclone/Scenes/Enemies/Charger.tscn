@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://caidk88pdjqnf"]
+[gd_scene load_steps=24 format=3 uid="uid://caidk88pdjqnf"]
 
 [ext_resource type="Script" uid="uid://blmxrsvuffmji" path="res://Scenes/Enemies/charger.gd" id="1_nou43"]
 [ext_resource type="Texture2D" uid="uid://li8kvluh6kyu" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzh0.png" id="2_wndrn"]
@@ -9,18 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://c3s3xurx3txl8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzm0.png" id="7_saubl"]
 [ext_resource type="Texture2D" uid="uid://bakt8g0niypa8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzn0.png" id="8_v78ry"]
 [ext_resource type="Texture2D" uid="uid://vurwyo2645hb" path="res://Sprites/AutoShotgunGuy/SPRITES/asgza1.png" id="9_qb32f"]
-[ext_resource type="Texture2D" uid="uid://pm5tp2hucc17" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzb1.png" id="10_1in7s"]
-[ext_resource type="Texture2D" uid="uid://5fkggpbqva8i" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzc1.png" id="11_qrxmp"]
-[ext_resource type="Texture2D" uid="uid://bc32gi5yvsis6" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzd1.png" id="12_ppj2r"]
-[ext_resource type="Texture2D" uid="uid://bj0u0g40ew4i1" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzo0.png" id="13_rc6g1"]
-[ext_resource type="Texture2D" uid="uid://bgktuy10qwgr8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzp0.png" id="14_o6tfl"]
-[ext_resource type="Texture2D" uid="uid://bmlsfremnw7f8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzq0.png" id="15_2olbv"]
-[ext_resource type="Texture2D" uid="uid://blvhdkxx3mci8" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzr0.png" id="16_3g1xf"]
-[ext_resource type="Texture2D" uid="uid://osaqs48jhpdh" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzs0.png" id="17_va826"]
-[ext_resource type="Texture2D" uid="uid://mtn1ocwxedk6" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzt0.png" id="18_xbmrp"]
-[ext_resource type="Texture2D" uid="uid://b2te0i801w6tv" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzu0.png" id="19_k7jqv"]
-[ext_resource type="Texture2D" uid="uid://domwqq23m0amb" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzv0.png" id="20_ybxq5"]
-[ext_resource type="Texture2D" uid="uid://kwgimfuhwuc" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzw0.png" id="21_tmlv0"]
+[ext_resource type="Texture2D" uid="uid://cjwnpu17d3ymm" path="res://Sprites/Horn Beast/SPRITES/hbsta1.png" id="10_wndrn"]
+[ext_resource type="Texture2D" uid="uid://vhlpbddqekul" path="res://Sprites/Horn Beast/SPRITES/hbstb1.png" id="11_5l1w1"]
+[ext_resource type="Texture2D" uid="uid://c4ngs4o5utvy4" path="res://Sprites/Horn Beast/SPRITES/hbstc1.png" id="12_iofpq"]
+[ext_resource type="Texture2D" uid="uid://b71rg44sev70r" path="res://Sprites/Horn Beast/SPRITES/hbstd1.png" id="13_lt2cq"]
+[ext_resource type="Texture2D" uid="uid://cn1ej4ca568wy" path="res://Sprites/Horn Beast/SPRITES/hbstg0.png" id="14_7p3v0"]
+[ext_resource type="Texture2D" uid="uid://dmei5eeprvnij" path="res://Sprites/Horn Beast/SPRITES/hbsth0.png" id="15_6xs0s"]
+[ext_resource type="Texture2D" uid="uid://c61wfqx127m8h" path="res://Sprites/Horn Beast/SPRITES/hbsti0.png" id="16_pifhe"]
+[ext_resource type="Texture2D" uid="uid://bo7kt354supl4" path="res://Sprites/Horn Beast/SPRITES/hbstj0.png" id="17_nou43"]
+[ext_resource type="Texture2D" uid="uid://xqd1dhjaiown" path="res://Sprites/Horn Beast/SPRITES/hbstk0.png" id="18_wndrn"]
 [ext_resource type="Texture2D" uid="uid://dma34m6e8y0sr" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzg1.png" id="22_nw0hp"]
 [ext_resource type="Texture2D" uid="uid://y2j8xut4mrmm" path="res://Sprites/AutoShotgunGuy/SPRITES/asgze1.png" id="23_je8am"]
 [ext_resource type="Texture2D" uid="uid://dq3q48pumar4s" path="res://Sprites/AutoShotgunGuy/SPRITES/asgzf1.png" id="24_5doig"]
@@ -66,16 +63,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_qb32f")
+"texture": ExtResource("10_wndrn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_1in7s")
+"texture": ExtResource("11_5l1w1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_qrxmp")
+"texture": ExtResource("12_iofpq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ppj2r")
+"texture": ExtResource("13_lt2cq")
 }],
 "loop": true,
 "name": &"Walk",
@@ -83,31 +80,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_rc6g1")
+"texture": ExtResource("14_7p3v0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_o6tfl")
+"texture": ExtResource("15_6xs0s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_2olbv")
+"texture": ExtResource("16_pifhe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_3g1xf")
+"texture": ExtResource("17_nou43")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_va826")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_xbmrp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_k7jqv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_ybxq5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_tmlv0")
+"texture": ExtResource("18_wndrn")
 }],
 "loop": false,
 "name": &"explode",
@@ -157,11 +142,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("BoxShape3D_01wab")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.196605, 0)
 sprite_frames = SubResource("SpriteFrames_w5s6p")
-animation = &"shoot"
-frame = 2
-frame_progress = 1.0
+animation = &"Walk"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

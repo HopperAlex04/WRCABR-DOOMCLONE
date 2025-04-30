@@ -1,0 +1,4 @@
+horn/sight		dshrnsit
+horn/attack		woosh3
+horn/shotx		strike1
+horn/death		dshrndie

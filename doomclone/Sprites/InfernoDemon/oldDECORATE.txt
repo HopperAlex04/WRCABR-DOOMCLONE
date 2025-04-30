@@ -1,0 +1,1229 @@
+/* The Inferno Demon is a mighty demon with full control over the power of fire. This monster 
+   took a shit load of time to create and perfect, I hope you like it.
+   I recommend to use it only as a boss like monster as it is extremely powerful and can kill 
+   you really fast if you haven't mastered dodging. He can't hurt himself because he uses a 
+   damage type and is resistant to his own damage type. He has about five attacks, one of which 
+   has about twenty different combinations. */
+
+Actor InfernoDemon
+{
+	//$Category Monsters
+	//$Title Inferno Demon
+	Monster
+	Health 5000
+	Speed 16
+	Radius 65
+	Height 115
+	Mass 5000
+	Damage 15
+	BloodColor "Orange"
+	PainChance 4
+	DamageFactor "Inferno", 0
+	SeeSound "Infdem/see"
+	PainSound "Infdem/pain"
+	DeathSound "Infdem/death"
+	ActiveSound "Infdem/active"
+	Obituary "%o was sent to burn in the fires of hell for an eternity."
+	Tag "Inferno Demon"
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	+BOSS
+	+FLOORCLIP
+	+TELESTOMP
+	+DONTMORPH
+	+NOTARGET
+	+NOICEDEATH
+States
+	{
+	Spawn:
+		INDM A 5 A_Look
+		Loop
+	See:
+		TNT1 A 0 Radius_Quake(10,5,0,10,0)
+		TNT1 A 0 A_PlaySound("KoraxStep",6,0.7)
+		INDM AB 6 A_Chase
+		TNT1 A 0 Radius_Quake(10,5,0,10,0)
+		TNT1 A 0 A_PlaySound("KoraxStep",7,0.7)
+		INDM CD 6 A_Chase
+		Loop
+	Missile:
+		INDM A 1 A_Jump(128,"Att05","Att06","Att07","Att08","Att09","Att10","Att11","Att12","Att13","Att14","Att15","Att16","Att17","Att18","Att19","Att20","Att21","Att22","Att23","Att24","Att25")
+		INDM A 1 A_Jump(256,"Att01","Att02","Att03","Att04")
+	Att01:
+		INDM A 2 Bright A_FaceTarget
+		INDM GGG 2 Bright A_SpawnItemEx("FirePuff",-24,0,96,0,0,7)
+		INDM G 15 Bright A_CustomMissile("MeteorBolt",32,0,0,0,0)
+		goto See
+	Att02:
+		INDM A 2 Bright A_FaceTarget
+		INDM H 15 Bright A_CustomMissile("InfernoBomb",70,0,0,0,0)
+		goto See
+	Att03:
+		INDM B 20 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,0,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,20,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,40,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,60,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,80,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-20,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-40,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-60,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-80,2,0)
+		INDM C 20 Bright Radius_Quake(20,35,0,40,0)
+		INDM B 20 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,0,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,20,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,40,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,60,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,80,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-20,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-40,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-60,2,0)
+		TNT1 A 0 A_CustomMissile("ID_FireBeam",0,0,-80,2,0)
+		INDM C 20 Bright Radius_Quake(20,35,0,40,0)
+		Goto See
+	Att04:
+		INDM A 2 Bright A_FaceTarget
+		INDM I 15 Bright A_CustomMissile("FireGlyphLineSpawner1",32,0,0,0,0)
+		Goto See
+	Att05:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att06:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att07:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att08:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att09:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att10:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att11:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att12:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att13:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att14:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att15:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att16:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att17:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att18:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att19:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att20:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att21:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att22:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att23:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		INDM F 10 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att24:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,-32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Att25:
+		INDM E 2 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",120,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",90,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",60,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",60,32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",90,-32,0,0,0)
+		INDM F 8 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("DemonMeteor",120,32,0,0,0)
+		INDM F 10 Bright
+		Goto See
+	Pain:
+		INDM A 0 A_Pain
+		Goto See
+	Death:
+		INDM J 5
+		INDM K 5 A_FaceTarget
+		INDM L 5 A_Scream
+		INDM MNOPQ 5
+		INDM R 10 A_NoBlocking
+		INDM S 5 Radius_Quake(20,200,0,40,0)
+		INDM TUV 5
+		TNT1 A 0 A_CustomMissile("InfernoDemonDFSpawner",0,16,0,0)
+		TNT1 A 0 A_SpawnItemEx("LargeGlyphExplosion1")
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5 A_SpawnItemEx("LargeGlyphExplosion1")
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 5
+		TNT1 AAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE)
+		INDM W 150
+		INDM WWW 25 A_CustomMissile("FinaleMeteor",0,0,0,2)
+		INDM W 1 A_CustomMissile("InfernoDemonDFSpawner2",0,16,0,0)
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor FireParticleFloat
+{
+	+NoInteraction
+	+ForceXYBillboard
+	RenderStyle "Add"
+	Scale 0.125
+States
+	{
+	Spawn:
+		ORPA A 10 Bright
+		ORPA A 1 Bright A_FadeOut(0.1)
+		Wait
+	}
+}
+
+Actor FireSpark
+{
+	Projectile
+	Radius 1
+	Height 1
+	Scale 0.1
+	Gravity 0.5
+	RenderStyle "Add"
+	+ForceXYBillboard
+	-NoGravity
+	+DontSplash
+	+THRUACTORS
+	//+NOCLIP
+	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+States
+	{
+	Spawn:
+		ORPA A 10 Bright
+		ORPA A 1 Bright A_FadeOut
+		Wait
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor BoulderSmall
+{
+	Projectile
+	Radius 6
+	Height 6
+	Speed 20
+	VSpeed 3
+	Scale 0.2
+	Bouncetype "Doom"
+	BounceCount 6
+	-NOGRAVITY
+	+CANBOUNCEWATER
+	+BOUNCEONACTORS
+	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+	+DontSplash
+States
+	{
+	Spawn:
+		SE01 ABCDEFGH 3
+		Loop
+	Death:
+		SE01 H 100
+		SE01 H 5 A_Fadeout
+		Wait
+	}
+}
+
+Actor InfernoDemonDFSpawner
+{
+	Projectile
+	Radius 1
+	Height 2
+	Speed 0
+	Damage 0
+	ReactionTime 150
+	+NOEXPLODEFLOOR
+	+DONTBLAST
+States
+	{
+	Spawn:
+		TNT1 A 1 Nodelay A_SpawnItemEx("InfernoDemonDeathFire",random(-3,3),random(-3,3),0,0,0,16,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_CountDown
+		Loop
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor InfernoDemonDFSpawner2 : InfernoDemonDFSpawner { ReactionTime 10 }
+
+Actor InfernoDemonDeathFire
+{
+	RenderStyle "Add"
+	Alpha 0.67
+	Scale 2.0
+	+NOINTERACTION
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		FRFX JKLMNOP 2 Bright
+		Stop
+	}
+}
+
+Actor DemonMeteorTail
+{
+	RenderStyle "Add"
+	Alpha 0.4
+	+NOINTERACTION
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		AF03 ABCDEFGHI 1 Bright
+		Stop
+	}
+}
+
+Actor DemonMeteor
+{
+	Projectile
+	Radius 6
+	Height 8
+	Speed 15
+	Damage 6
+	Scale .55
+	DamageType "Inferno"
+	SeeSound "Apocalypse/Meteor"
+	DeathSound "Apocalypse/Death"
+	Decal "BaronScorch"
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		AF02 AAAABBBBCCCC 1 Bright A_SpawnItemEx("DemonMeteorTail",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		Loop
+	Death:
+		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,10),Random(90,270),128)
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("BoulderSmall",Random(-5,5),Random(-5,5),Random(1,10),Random(-5,5),Random(-5,5),Random(2,10),Random(90,270),128)
+        AF02 EFGHI 4 Bright
+        Stop
+	}
+}
+
+Actor MeteorBolt : FastProjectile
+{
+	Radius 8
+	Height 8
+	Speed 500
+	Damage 0
+	+SKYEXPLODE
+	+DONTBLAST
+States
+	{
+	Spawn:
+		TNT1 A 2
+		Loop
+	Death:
+		TNT1 A 0 A_CustomMissile("FireGlyphLine",0,0,0,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine",0,0,128,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine",0,0,-128,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine2",0,0,0,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine2",0,0,128,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine2",0,0,-128,2)
+		TNT1 A 35
+		TNT1 A 6 A_CustomMissile("FinaleMeteor",0,0,0,2)
+		Stop
+	}
+}
+
+Actor ApocalypseMeteor
+{
+	Projectile
+	Radius 2
+	Height 2
+	Damage 8
+	DamageType "Inferno"
+	Speed 1
+	SeeSound "Apocalypse/Meteor"
+	DeathSound "Apocalypse/Death"
+	-NOGRAVITY
+	-FLOAT
+	+FLOORCLIP
+	+SPAWNCEILING
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		AF02 AABBCC 1 Bright A_SpawnItemEx("MeteorTrail",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+		Loop
+	Death:
+		TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,10),Random(90,270),128)
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("BoulderSmall",Random(-5,5),Random(-5,5),Random(1,10),Random(-5,5),Random(-5,5),Random(2,10),Random(90,270),128)
+		AF02 DEFGHI 4 Bright
+		Stop
+	}
+}
+
+Actor ApocalypseFinaleMeteor : ApocalypseMeteor
+{
+	Damage 16
+	Scale 2.5
+	DamageType "Inferno"
+	SeeSound "weapons/firbfi"
+	DeathSound "weapons/hellex"
+	//+DONTTHRUST
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		G001 AABBCC 1 Bright A_SpawnItemEx("MeteorFinaleTrail",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+		Loop
+	Death:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,10),Random(90,270),128)
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("ApocalypseMeteor",Random(-5,5),Random(-5,5),Random(2,10),Random(-5,5),Random(-5,5),Random(2,20),Random(0,359),SXF_CLIENTSIDE|SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SetTranslucent(1.0,1)
+		G001 J 4 Bright A_Explode(32,128,0)
+		G001 KLMN 2 Bright A_Fadeout(0.2)
+		Stop
+	}
+}
+
+Actor MeteorFinaleTrail
+{
+	RenderStyle "Add"
+	Alpha 0.4
+	Scale 2.5
+	+NOINTERACTION
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		G001 DEFGHI 1 Bright
+		Stop
+	}
+}
+
+Actor MeteorTrail
+{
+	RenderStyle "Add"
+	Alpha 0.4
+	+NOINTERACTION
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		AF03 ABCDEFGHI 1 Bright
+		Stop
+	}
+}
+
+Actor FinaleMeteor
+{
+	Projectile
+	Radius 0
+	Height 0
+	Speed 0
+	SeeSound "weapons/diasht"
+	+CEILINGHUGGER
+	+NOCLIP
+States
+	{
+	Spawn:
+		TNT1 A 3
+		TNT1 A 3 A_CustomMissile("ApocalypseFinaleMeteor",-16,0,0,0,0)
+		Stop
+	}
+}
+
+Actor FireGlyphLine
+{
+	Projectile
+	Radius 0
+	Height 32
+	Speed 16
+	SeeSound "weapons/diasht"
+	+CEILINGHUGGER
+	+NOCLIP
+	+DONTBLAST
+States
+	{
+	Spawn:
+		TNT1 A 3
+		TNT1 AAAAAAAAAA 3 A_CustomMissile("ApocalypseMeteor",-16,0,0,0,0)
+		Stop
+	}
+}
+
+Actor FireGlyphLine2 : FireGlyphLine
+{
+States
+	{
+	Spawn:
+		TNT1 A 3
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("StayFire",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+		Stop
+	}
+}
+
+Actor StayFire
+{
+	Scale 0.8
+	Speed 6
+	Renderstyle "Add"
+	Alpha 0.67
+	ReactionTime 3
+	+MISSILE
+	+THRUACTORS
+	+DROPOFF
+	+RANDOMIZE
+	+CANBOUNCEWATER
+	+DONTSPLASH
+	+FLOORHUGGER
+States
+	{
+	Spawn:
+		TNT1 A 0
+		FRTF ABCDEFGHIJK 3 Bright
+		TNT1 A 0 A_Countdown
+		Goto Spawn+4
+	Death:
+		FRTF LMNO 3 Bright
+		Stop
+	}
+}
+
+Actor FirePuff
+{
+	Scale 3.0
+	Renderstyle "Add"
+	Alpha 0.67
+	+NOINTERACTION
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		DFFP ABCDEFGHIJKLMNOPQR 1 Bright
+		Stop
+	}
+}
+
+Actor InfernoBomb
+{
+	Projectile
+	Radius 8
+	Height 8
+	Speed 15
+	Damage 0
+	DamageType "Inferno"
+	Renderstyle "Add"
+	Alpha 0.95
+	SeeSound "weapons/justfi"
+	DeathSound "weapons/firex3"
+	ReactionTime 7
+	+THRUACTORS
+	+DONTBLAST
+	+ForceXYBillboard
+States
+	{
+	Spawn:
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL A 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL B 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL C 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL D 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL E 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL F 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL G 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL H 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL I 2 Bright A_SpawnItemEx("BombTrail")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL J 2 Bright A_SpawnItemEx("BombTrail")
+	ChargeBall:
+		TNT1 A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE)
+		TNT1 A 0 A_ChangeFlag("FLOATBOB",true)
+		
+		TNT1 A 0 A_PlaySound("monster/bomb")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL A 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL B 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL C 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL D 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL E 2 bright
+		TNT1 A 0 A_SetScale(scaleX+0.1,scaleY+0.1)
+		TNT1 A 0 A_CountDown
+		
+		TNT1 A 0 A_PlaySound("monster/bomb")
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL F 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL G 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL H 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL I 2 bright
+		TNT1 AAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 AAAA 0 A_SpawnItemEx("FireParticleFloat",Random(-5,5),Random(-5,5),Random(-5,5),Random(-1,1),Random(-1,1),Random(2,4),0,128,0)
+		SBLL J 2 bright
+		TNT1 A 0 A_SetScale(scaleX+0.1,scaleY+0.1)
+		TNT1 A 0 A_CountDown
+		Goto ChargeBall+2
+	Death:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 Bright A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,0)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,-5)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,-10)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,-10)						//WOW I FUCKING LOVE ZANDRONUM, DONT YOU?
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,0,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,15,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,30,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,45,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,60,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,75,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,90,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,105,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,120,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,135,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,150,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,165,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,180,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,195,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,210,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,225,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,240,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,255,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,270,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,285,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,300,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,315,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,330,2,-15)
+		TNT1 A 0 A_CustomMissile("ID_LavaBall",0,16,345,2,-15)
+
+		SBLL K 2 Bright A_ChangeFlag("FLOATBOB",false)
+		SBLL LMNOPQRSTUVW 2 Bright
+		Stop
+	}
+}
+
+Actor BombTrail
+{
+	+NOINTERACTION
+	+ForceXYBillboard
+	RenderStyle "Add"
+	Scale 0.8
+States
+	{
+	Spawn:
+		SBLL ABCDEF 1 Bright
+		SBLL GHIJABCDE 1 Bright A_FadeOut(0.08)
+		Stop
+	}
+}
+
+Actor ID_LavaBall
+{
+	Projectile
+	Radius 8
+	Height 8
+	Speed 15
+	Damage 6
+	DamageType "Inferno"
+	Obituary "%o was sent to burn in the fires of hell for an eternity."
+	Renderstyle "Add"
+	Alpha 0.95
+	//+THRUGHOST
+	+ForceXYBillboard
+	SeeSound "weapons/firmfi"
+	DeathSound "weapons/firex3"
+	Decal "DoomImpScorch"
+States
+	{
+	Spawn: 
+		BAL3 AB 4 Bright A_SpawnItemEx("ID_RedPuff",0,0,0)
+		Loop
+	Death:
+		TNT1 AAAAAAAA 0 Bright A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,10),Random(-5,5),Random(-5,5),Random(0,20),Random(90,270),128)
+		BAL3 C 5 Bright A_Explode(32,96)
+		BAL3 DE 5 Bright
+		Stop
+	}
+}
+
+Actor ID_RedPuff : Actor
+{
+    Renderstyle "Add"
+    Alpha 0.85
+	+NoInteraction
+States
+	{
+	Spawn:
+		TNT1 A 3
+		RPUF ABCDE 3 Bright
+		Stop
+	}
+}
+
+Actor ID_FireBeam
+{
+	Projectile
+	Height 10
+	Radius 10
+	DamageType "Inferno"
+	Obituary "%o was sent to burn in the fires of hell for an eternity."
+	Renderstyle "Add"
+	Speed 12
+	Scale 0.5
+	Alpha 0.75
+	Damage 5
+	ReactionTime 50
+	Decal "BaronScorch"
+	+DROPOFF
+	-NOGRAVITY
+	+FLOORHUGGER
+	+EXTREMEDEATH
+	+DONTSPLASH
+	+RIPPER
+	+BLOODLESSIMPACT
+States
+	{
+	Spawn:
+		HK04 ABC 1 bright A_CustomMissile("BeamFire",0,0,0,4)
+		TNT1 A 0 A_PlaySound("monster/firebeamstart",7,0.4,true)
+		TNT1 A 0 A_CountDown
+		Loop
+	Death:
+		TNT1 A 0 A_StopSound(7)
+		HK05 ABCDE 2 bright
+		Stop
+	}
+}
+
+Actor BeamFire
+{
+	Scale 0.5
+	DamageType "Inferno"
+	Renderstyle "Add"
+	Obituary "%o was sent to burn in the fires of hell for an eternity."
+	+DONTSPLASH
+	+EXTREMEDEATH
+	+NOINTERACTION
+States
+	{
+	Spawn:
+		TNT1 A 5
+		FRTF ABCDEFGHIJKLMNO 3 bright A_Explode(1,8)
+		Stop
+	}
+}
+
+Actor FireGlyphLineSpawner1 : FastProjectile
+{
+	Radius 2
+	Height 32
+	Speed 500
+	SeeSound "weapons/diasht"
+	//+THRUACTORS
+	+DONTBLAST
+States
+	{
+	Spawn:
+		TNT1 A 1
+		Loop
+	Death:
+		TNT1 A 0 A_SpawnItemEx("StayFire",0,0,0,4,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("StayFire",0,0,0,-4,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("StayFire",0,0,0,0,4,0,0)
+		TNT1 A 0 A_SpawnItemEx("StayFire",0,0,0,0,-4,0,0)
+		TNT1 A 35 A_PlaySound("Glyph/Start")
+		TNT1 A 0 A_CustomMissile("FireGlyphLine10",0,0,0,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine10",0,0,115,2)
+		TNT1 A 0 A_CustomMissile("FireGlyphLine10",0,0,-135,2)
+		TNT1 A 0 A_SpawnItemEx("LargeGlyphExplosion1",0,0,0,0,0,0,0,SXF_TRANSFERPOINTERS)
+		TNT1 A 0 A_SpawnItemEx("FireSpiral",20,20,40,0,0,0,0,SXF_TRANSFERPOINTERS)
+		Stop
+	}
+}
+
+Actor FireGlyphLine10
+{
+	Projectile
+	Radius 2
+	Height 32
+	Speed 16
+	+FLOORHUGGER
+	+THRUACTORS
+	+DONTBLAST
+States
+	{
+	Spawn:
+		TNT1 AAAAAAAAAAAAAAAA 1 A_SpawnItemEx("StayFire",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+		TNT1 A 0 A_ChangeVelocity(-16,16,0,CVF_RELATIVE|CVF_REPLACE)
+		TNT1 AAAAAAAAAAAAAAAA 1 A_SpawnItemEx("StayFire",0,0,0,0,0,0,0,SXF_CLIENTSIDE)
+		TNT1 A 1 A_SpawnItem("GlyphExplosion1",0,0,0)
+		Stop
+	}
+}
+
+Actor GlyphExplosion1
+{
+	Radius 8
+	Height 56
+	Scale 0.5
+	DamageType "Inferno"
+	+NOGRAVITY
+States
+	{
+	Spawn:
+		NKXP A 3 Bright
+		NKXP B 3 Bright A_PlaySound("pyro/explosion")
+		NKXP C 3 Bright A_Explode(50,128,1)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,32),Random(-5,5),Random(-5,5),Random(0,20),Random(0,359),128)
+		NKXP DEFGHIJKLMNOPQRSTU 3 Bright
+		Stop
+    }
+}
+
+Actor LargeGlyphExplosion1 : GlyphExplosion1
+{
+	Scale 1.0
+States
+	{
+	Spawn:
+		NKXP A 3 Bright
+		NKXP B 3 Bright A_PlaySound("pyro/explosion")
+		NKXP C 3 Bright A_Explode(100,256,1)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("FireSpark",Random(-5,5),Random(-5,5),Random(0,96),Random(-5,5),Random(-5,5),Random(0,20),Random(0,359),128)
+		NKXP DEFGHIJKLMNOPQRSTU 3 Bright
+		Stop
+	}
+}
+
+Actor FireSpiral
+{
+	+NOINTERACTION
+	+DONTBLAST
+	ReactionTime 60
+States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SetAngle(angle+15)
+		TNT1 A 0 A_ChangeVelocity(3,3,3,CVF_RELATIVE|CVF_REPLACE)
+		TNT1 A 2 A_SpawnItemEx("SpiralFire1",0,0,0)
+		TNT1 A 0 A_CountDown
+		Loop
+	Death:
+		TNT1 A 1
+		Stop
+	}
+}
+
+Actor SpiralFire1
+{
+	+NOINTERACTION
+	Renderstyle "Add"
+	Alpha 0.85
+States
+	{
+	Spawn:
+		RI01 ABCDEFGHIJKLMABCDEFGHIJKLMNOP 2 bright
+		Stop
+	}
+}

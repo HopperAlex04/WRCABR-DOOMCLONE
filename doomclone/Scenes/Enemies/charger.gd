@@ -40,7 +40,6 @@ func update_target_location(target_location):
 	
 func take_damage(dmg_amount):
 	health -= dmg_amount
-	$AnimatedSprite3D.play("hit")
 	if health <= 0:
 		death()
 	
@@ -51,6 +50,8 @@ func death():
 	$CollisionShape3D.disabled = true
 	dead = true
 	$AnimatedSprite3D.play("explode")
+	await $AnimatedSprite3D.animation_finished
+	self.queue_free()
 	
 func charge():
 	#print("freshCall")

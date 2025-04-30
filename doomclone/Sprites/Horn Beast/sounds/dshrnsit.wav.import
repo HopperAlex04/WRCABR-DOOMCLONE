@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bj205lk2cimse"
+path="res://.godot/imported/dshrnsit.wav-9274816b2e05a6ebc768531fb56b5a87.sample"
+
+[deps]
+
+source_file="res://Sprites/Horn Beast/sounds/dshrnsit.wav"
+dest_files=["res://.godot/imported/dshrnsit.wav-9274816b2e05a6ebc768531fb56b5a87.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

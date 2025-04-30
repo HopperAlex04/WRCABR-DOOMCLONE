@@ -1,0 +1,16 @@
+pointlight GenieMissile
+{
+	color 0.0 1.0 1.0	
+	size 32
+	dontlightself 1
+}
+
+object FamiliarMissile
+{
+	frame FNIF { light GenieMissile }
+}
+
+object GFamiliarMissile
+{
+	frame GNIF { light GenieMissile }
+}

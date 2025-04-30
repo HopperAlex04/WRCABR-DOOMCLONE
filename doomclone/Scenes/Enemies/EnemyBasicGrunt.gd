@@ -5,6 +5,9 @@ extends CharacterBody3D
 var speed = 5
 var health = 20
 var dead = false
+var rng = RandomNumberGenerator.new()
+var shooting = false
+var shotdis = 15
 signal player_hit
 
 func _ready() -> void:
@@ -24,7 +27,7 @@ func _physics_process(_delta):
 
 func update_target_location(target_location):
 	if !dead:
-		if global_transform.origin.distance_to(nav.target_position) > 15:
+		if global_transform.origin.distance_to(nav.target_position) > 15 && !shooting:
 			set_process(true)
 			set_physics_process(true)
 			nav.target_position = target_location
@@ -37,7 +40,6 @@ func update_target_location(target_location):
 	
 func take_damage(dmg_amount):
 	health -= dmg_amount
-	$AnimatedSprite3D.play("hit")
 	if health <= 0:
 		death()
 	
@@ -48,13 +50,17 @@ func death():
 	$CollisionShape3D.disabled = true
 	dead = true
 	$AnimatedSprite3D.play("explode")
+	await $AnimatedSprite3D.animation_finished
+	self.queue_free()
 	
 func shoot():
 	#print("freshCall")
+	shooting = true
 	set_process(false)
 	set_physics_process(false)
 	$AnimatedSprite3D.play("shoot")
 	await $AnimatedSprite3D.animation_finished
+	shooting = false
 	if $RayCast3D.is_colliding() and $RayCast3D.get_collider() == get_tree().get_first_node_in_group("Player"):
 		emit_signal("player_hit")
 	#await $AnimatedSprite3D.animation_finished
@@ -65,8 +71,10 @@ func shoot():
 
 func _on_timer_timeout() -> void:
 	#print("timeout")
-	if global_transform.origin.distance_to(nav.target_position) < 15 and !dead:
+	if global_transform.origin.distance_to(nav.target_position) < shotdis && !dead:
 		shoot()
+		$Timer.wait_time = rng.randf_range(1.0, 3.0)
+		shotdis = rng.randf_range(10, 40)
 
 
 func _on_animated_sprite_3d_animation_finished() -> void:

@@ -1,0 +1,956 @@
+version "4.8"
+
+//---------------------------------------------------------------------------
+//
+// Familiar
+//
+//---------------------------------------------------------------------------
+
+Class Familiar : Actor
+{
+
+	bool left;
+	Actor spawnfx;
+	bool ressed;
+	string colour;
+	
+	Default
+	{
+		//$Category Monsters
+		//%Tag Familiar
+		Health 100;
+		ReactionTime 8;
+		PainChance 60;
+		Speed 12;
+		Radius 20;
+		Height 68;
+		Mass 75;
+		BloodColor "";
+		Damage 1;
+		RenderStyle "Translucent";
+		Alpha 0.95;
+		Scale 0.8;
+		Species "Familiar";
+		Monster;
+		+DROPOFF;
+		+NOBLOOD;
+		+FLOAT;
+		+FLOORCLIP;
+		+NOGRAVITY;
+		+INVULNERABLE;
+		+TELESTOMP;
+		+BRIGHT;
+		+LOOKALLAROUND;
+		+NOTARGET;
+		+NOINFIGHTING;
+		SeeSound "FamiliarSpawn";
+		PainSound "FamiliarPain";
+		DeathSound "FamiliarDeath";
+		ActiveSound "FamiliarActive";
+		Obituary "%o's soul is burning.";
+	}
+	States
+	{
+	Respawn:
+		FNIX H 2 
+		{
+			ThrustThingZ(0,8,0,0);
+			A_StartSound("FamiliarCameBack",0);
+			A_SetInvulnerable();
+			A_SetRenderStyle(0.0,STYLE_Translucent);
+			ressed = TRUE;
+		}
+		FNIX HIIJ 6 A_FadeIn(0.2);
+		FNIX I 6 { A_UnSetInvulnerable(); A_SetRenderStyle(0.95,STYLE_Translucent); }
+		Goto Chase;
+	Spawn:
+		FNIX X 25;// A_UnSetInvulnerable()
+		FNIX X 10 { ressed = FALSE; }
+		FNIX EFG 10 A_Look();
+		Goto Spawn+1;
+	See:
+		FNIX E 8;
+		FNIX F 6;
+		FNIX G 5;
+		FNIX F 8;
+		FNIX E 6;
+		FNIX G 7 { ThrustThingZ(0,10,0,0); CA_FamSpawnRock(); }
+		FNIX HI 5;
+		FNIX J 5 A_UnSetInvulnerable();
+	Chase:
+		FNIX AAABBBCCC 2 A_Chase("Missile","Missile",CHF_RESURRECT|CHF_NIGHTMAREFAST);
+		TNT1 A 0 ThrustThingZ(0,2,0,0);
+		FNIX AAABBBCCC 2 A_Chase("Missile","Missile",CHF_RESURRECT|CHF_NIGHTMAREFAST);
+		TNT1 A 0 ThrustThingZ(0,2,1,0);
+		Loop;
+	Heal:
+		FNIX Y 0
+		{
+			A_RemoveLight("BlueLight");
+			A_AttachLight("RedLight",DynamicLight.PointLight,"Red",64,64,DYNAMICLIGHT.LF_ADDITIVE);
+			A_StartSound("FamiliarRevive");
+		}
+		FNIX YYYYY 4 A_FadeOut(0.2,0);
+		FNIX Y 0 A_Die("Sacrifice");
+		Stop;
+	Pain:
+		FNIX D 6 { A_Stop(); A_Pain(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		FNIX I 2;
+		FNIX H 2 A_SetInvulnerable();
+		FNIX GFEFGFEFG 6;
+		FNIX H 2;
+		FNIX I 2 A_UnSetInvulnerable();
+		Goto Tele;
+	Tele:
+		FNIX AAAA 2 A_FadeOut(0.2,0);
+		TNT1 A 1 A_SetRenderStyle(0.0,STYLE_Translucent);
+		//FNIX A 0 A_StartSound("");   In case you want the blink to have a sound.
+		TNT1 AAAAAAAAAA 0 A_Wander();
+		TNT1 A 1;
+		FNIX AAAA 2 A_FadeIn(0.2);
+		FNIX A 2 { A_FaceTarget(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		Goto Missile+1;
+	Missile:
+		FNIX A 0 A_Jump(85,"Tele");
+		FNIX A 0 A_CheckSight("Chase");
+		FNIX K 8 A_FaceTarget();
+		FNIX KKK 8 
+		{
+			A_FaceTarget();
+			if(left == TRUE)
+			{
+				A_SpawnProjectile("FamiliarMissile",32,-20);
+				left = FALSE;
+			}
+			else
+			{
+				A_SpawnProjectile("FamiliarMissile",32,20);
+				left = TRUE;			
+			}
+			A_StartSound("FamiliarFire",0);
+		}
+		Goto Chase;
+	Crash:
+	XDeath:
+		FNIX M 4 { A_Scream(); A_FaceTarget(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		FNIX M 1;
+		FNIX N 5 A_NoBlocking();
+		FNIX O 5 CA_FamSplortch();
+		Stop;
+	Death:
+		FNIX D 1 A_SetRenderStyle(0.95,STYLE_Translucent);
+		FNIX D 4 A_FaceTarget();
+		FNIX L 4;
+		FNIX L 1;
+		FNIX L 4 A_NoBlocking();
+		FNIX L 200 ;
+		Stop;
+	Death.Sacrifice:
+		TNT1 A 1 A_NoBlocking();
+		Stop;
+	Ice:
+		FNIX R 5 { A_FreezeDeath(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		FNIX R 1 A_FreezeDeathChunks();
+		Wait;
+	}
+	
+	void CA_FamSpawnRock()
+		{
+		for( int rtid = 1337; rtid < 1342; rtid++ )
+			{ A_SpawnItemEx("FamiliarRockPiece",random(-4,4),random(-4,4),0,random(-2,2),random(-2,2),random(0,4),0,0,0,rtid); }
+		}
+		
+	void CA_FamSplortch()
+		{
+		A_SpawnItemEx("FamiliarSplotch",0,0,2,random(-4,4),random(-4,4),random(3,7),0,0,0,1337);
+		A_SpawnItemEx("FamiliarSplotch",0,0,12,random(-4,4),random(-4,4),random(3,7),0,0,0,1338);
+		}
+		
+	override void PostBeginPlay()
+	{
+		super.PostBeginPLay();
+		A_AttachLight("BlueLight", DynamicLight.PointLight, "Blue", 48, 64);
+		colour = "0066FF";
+	}
+	
+	override void PreMorph(Actor mo, bool current)
+	{
+		if(!current)
+		{
+			colour = "000000";
+		}
+	}
+	
+	override void PostUnMorph(Actor mo, bool current)
+	{
+		if(current)
+		{
+			colour = "0066FF"; 
+		}
+	}
+	
+	override bool CanResurrect(Actor other, bool passive)
+	{
+		int upgrade = Random(0, 100);
+		if(!passive && other.SpawnHealth() >= SpawnHealth() && !other.CheckInventory("FamiliarStopper", 1) && !other.CheckInventory("GFamiliarStopper", 1))
+		{
+			other.A_SpawnItemEx("FamiliarRess", 0, 0, 0, 0, 0, 0, 0, SXF_SETMASTER);
+			self.A_SpawnItemEx("FamiliarRess2", 0, 0, 0, 0, 0, 0, 0, SXF_SETMASTER);
+			
+			if(ressed && upgrade > 90)
+				other.GiveInventory("GFamiliarSpawner", 1);
+			else
+				other.GiveInventory("FamiliarSpawner", 1);
+			
+			other.GiveInventory("FamiliarStopper", 1);  // <--- Comment this line out to allow Genie 
+			return TRUE;								 // to posses corpses repeatedly.
+		}
+		return FALSE;
+	}
+		
+	override void Tick()
+	{
+	super.Tick();
+	if(!isFrozen())
+		{
+			if(InStateSequence(self.Curstate, self.ResolveState("Chase")) || InStateSequence(self.Curstate, self.ResolveState("Missile")) || InStateSequence(self.Curstate, self.ResolveState("Tele")) || InStateSequence(self.Curstate, self.ResolveState("Respawn")) && GetAge() % 10 == 0)
+			{
+				A_SpawnParticleEx
+				(
+				colour,
+				TexMan.CheckForTexture ("FNIST0"),
+				style: STYLE_Add,
+				flags: SPF_FULLBRIGHT|SPF_ROLL,
+				lifetime: 70,
+				size: 7.0,
+				angle: 0,
+				xoff: FRandom (radius /2 ,-radius / 2),
+				yoff: FRandom (radius /2 ,-radius / 2),
+				zoff: FRandom (-5, 35),
+				velx: 0,
+				vely: 0,
+				velz: -0,
+				accelz: -0.05,
+				startalphaf: 1.25,
+				fadestepf: -0.002,
+				sizestep: -0.1,
+				startroll: 0,
+				rollvel: 0.5,
+				rollacc: 0
+				);
+			}
+		}
+	}
+}
+
+class FamiliarSplotch : FireDemonSplotch1
+{
+	States
+		{
+		Spawn:
+			TNT1 A 0 NoDelay
+			{
+			switch(TID)
+				{
+				case 1337: return ResolveState("Blue1"); break;
+				case 1338: return ResolveState("Blue2"); break;
+				case 1339: return ResolveState("Purple1"); break;
+				case 1340: return ResolveState("Purple2"); break;
+				}
+			return ResolveState(null);
+			}
+		Blue1:
+			FNXS A 3;
+			FNXS A 6 A_QueueCorpse();
+			FNXS C -1;
+			Stop;
+		Blue2:
+			FNXS B 3;
+			FNXS B 6 A_QueueCorpse();
+			FNXS D -1;
+			Stop;
+		Purple1:
+			GNIX P 3;
+			GNIX P 6 A_QueueCorpse();
+			FNXS C -1;
+			Stop;
+		Purple2:
+			GNIX Q 3;
+			GNIX Q 6 A_QueueCorpse();
+			FNXS D -1;
+			Stop;
+		}
+}
+
+class FamiliarRockPiece : FireDemonRock1
+{
+	Default
+	{
+		+THRUACTORS;
+	}
+	States
+	{
+	Spawn:
+		FNIX "#" 1 NoDelay
+		{
+			frame = TID - 1319;
+		}
+		Loop;
+	Death:
+		FNIX "#" 5
+		{
+			frame = TID - 1319;
+			A_SmBounce();
+		}
+	XDeath:
+		FNIX "#" 200;
+		Stop;
+	}
+}
+
+Class FamiliarSpawner : Inventory
+{
+	Actor respawn;
+	
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+		
+	override void OwnerDied()
+	{
+		respawn = owner.Spawn("Familiar", owner.Vec3Offset(0, 0, 0));	
+		if(respawn)
+			respawn.SetStateLabel("Respawn");
+		super.OwnerDied();
+	}
+}
+
+Class FamiliarStopper : Inventory
+{
+	Default
+	{
+		Inventory.MaxAmount 1;
+		+INVENTORY.UNDROPPABLE;
+	}
+}
+
+Class FamiliarRess : Actor
+{
+	Default
+	{
+		Radius 2;
+		+NOINTERACTION;
+	}
+	States
+	{
+	Spawn:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
+		{
+			if(master)
+			{
+			A_SpawnParticleEx
+			(
+			"FF0000",
+			TexMan.CheckForTexture ("STARA0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+			lifetime: 50,
+			size: 10.0,
+			angle: 0,
+			xoff: FRandom (master.radius * 0.9, -master.radius * 0.9),
+			yoff: FRandom (master.radius * 0.9, -master.radius * 0.9),
+			zoff: 0,
+			velx: FRandom (0.5,-0.5),
+			vely: FRandom (0.5,-0.5),
+			velz: FRandom (0.4,3.0),
+			accelz: -0.001,
+			startalphaf: 1.25,
+			fadestepf: -0.002,
+			sizestep: -0.2,
+			startroll: 180/2,
+			rollvel: 0,
+			rollacc: 0
+			);
+			}
+		}
+	Death:
+		TNT1 A 1;
+		Stop;		
+	}
+}
+
+Class FamiliarRess2 : Actor
+{
+	Default
+	{
+		Radius 15;
+		+NOINTERACTION;
+	}
+	States
+	{
+	Spawn:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
+		{
+			if(master)
+			{
+			A_SpawnParticleEx
+			(
+			"FF0000",
+			TexMan.CheckForTexture ("STARA0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+			lifetime: 50,
+			size: 6.0,
+			angle: 0,
+			xoff: FRandom (radius, -radius),
+			yoff: FRandom (radius, -radius),
+			zoff: Frandom (0, 50),
+			velx: FRandom (0.5,-0.5),
+			vely: FRandom (0.5,-0.5),
+			velz: FRandom (-3.0 ,-0.4),
+			accelz: -0.001,
+			startalphaf: 1.25,
+			fadestepf: -0.002,
+			sizestep: -0.2,
+			startroll: 180/2,
+			rollvel: 0,
+			rollacc: 0
+			);
+			}
+		}
+	Death:
+		TNT1 A 1;
+		Stop;		
+	}
+}
+
+Class FamiliarMissile : Actor
+{
+	Default
+	{
+	Speed 14;
+	Damage 4;
+	Radius 12;
+	Height 10;
+	RenderStyle "Normal";
+	Projectile;
+	DeathSound "FamiliarFireExplode";
+	+BRIGHT
+	}
+	States
+	{
+	Spawn:
+		FNIF DDEE 1  A_Weave(0, 3, 0.0, 1.0);
+		Loop;
+	Death:
+		FNIF FG 4 ;
+		FNIF HI 3 ;
+		Stop;
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		if(!isFrozen())
+		{
+		A_SpawnParticleEx
+		(
+			"Cyan",
+			TexMan.CheckForTexture ("STARA0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_ROLL,
+			lifetime: 35,
+			size: 3.0,
+			angle: 0,
+			xoff: FRandom (radius /2 ,-radius / 2),
+			yoff: FRandom (radius /2 ,-radius / 2),
+			zoff: FRandom (-height / 2, height /2),
+			velx: 0,
+			vely: 0,
+			velz: -0,
+			accelz: -0,
+			startalphaf: 1.25,
+			fadestepf: -0.002,
+			sizestep: -0.1,
+			startroll: 180/2,
+			rollvel: 0.5,
+			rollacc: 0
+		);
+		}
+
+	}
+}
+
+
+//---------------------------------------------------------------------------
+//
+// Greater Familiar
+//
+//---------------------------------------------------------------------------
+
+Class GFamiliar : Actor
+{
+
+	bool left;
+	Actor spawnfx;
+	bool poss;
+	string colour;
+	
+	Default
+	{
+		//$Category Monsters
+		//%Tag Greater Familiar
+		Health 200;
+		ReactionTime 8;
+		PainChance 60;
+		Speed 12;
+		Radius 24;
+		Height 68;
+		Mass 75;
+		BloodColor "";
+		Damage 1;
+		RenderStyle "Translucent";
+		Alpha 0.95;
+		Scale 1.0;
+		Species "Familiar";
+		Monster;
+		+DROPOFF;
+		+NOBLOOD;
+		+FLOAT;
+		+FLOORCLIP;
+		+NOGRAVITY;
+		+INVULNERABLE;
+		+TELESTOMP;
+		+BRIGHT;
+		+LOOKALLAROUND;
+		+NOTARGET;
+		+NOINFIGHTING;
+		+DONTMORPH;
+		SeeSound "FamiliarSpawn";
+		PainSound "FamiliarPain";
+		DeathSound "FamiliarDeath";
+		ActiveSound "FamiliarActive";
+		Obituary "%o's soul is burning.";
+	}
+	States
+	{
+	Respawn:
+		GNIX H 2 
+		{
+			ThrustThingZ(0,8,0,0);
+			A_StartSound("FamiliarCameBack",0);
+			A_SetInvulnerable();
+			A_SetRenderStyle(0.0,STYLE_Translucent);
+		}
+		GNIX HIIJ 6 A_FadeIn(0.2);
+		GNIX I 6 { A_UnSetInvulnerable(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		Goto Chase;
+	Spawn:
+		GNIX X 25;//A_UnSetInvulnerable()
+		GNIX X 10;
+		GNIX EFG 10 A_Look();
+		Goto Spawn+1;
+	See:
+		GNIX E 8;
+		GNIX F 6;
+		GNIX G 5;
+		GNIX F 8;
+		GNIX E 6;
+		GNIX G 7 { ThrustThingZ(0,10,0,0); CA_FamSpawnRock(); }
+		GNIX HI 5;
+		GNIX J 5 A_UnSetInvulnerable();
+	Chase:
+		GNIX AAABBBCCC 2 A_Chase("Missile","Missile",CHF_RESURRECT|CHF_NIGHTMAREFAST);
+		TNT1 A 0 ThrustThingZ(0,2,0,0);
+		GNIX AAABBBCCC 2 A_Chase("Missile","Missile",CHF_RESURRECT|CHF_NIGHTMAREFAST);
+		TNT1 A 0 ThrustThingZ(0,2,1,0);
+		TNT1 A 0 Posses();
+		Loop;
+	Poss:
+		GNIP E 0
+		{
+			A_StartSound("GFamiliarPoss",0);
+			A_RemoveLight("PurpleLight");
+			A_AttachLight("GreenLight",DynamicLight.PointLight,"Green",64,64,DYNAMICLIGHT.LF_ADDITIVE);
+		}
+		GNIP EDCBA 4 A_FadeOut(0.2,0);
+		GNIP A 0 A_Die("Sacrifice");
+		Stop;
+	Heal:
+		FNIX Y 0
+		{
+			A_RemoveLight("PurpleLight");
+			A_AttachLight("RedLight", DynamicLight.PointLight,"Red",64,64,DYNAMICLIGHT.LF_ADDITIVE);
+			A_StartSound("FamiliarRevive");
+		}
+		FNIX YYYYY 4 A_FadeOut(0.2,0);
+		FNIX Y 0 A_Die("Sacrifice");
+		Stop;
+	Pain:
+		GNIX D 6 
+		{
+			A_Stop();
+			A_SetRenderStyle(0.95, STYLE_Translucent);
+			A_Pain();
+			bREFLECTIVE = TRUE;
+		}
+		GNIX I 2;
+		GNIX H 2 A_SetInvulnerable();
+		GNIX GFEFGFEFG 6;
+		GNIX H 2;
+		GNIX I 2 { A_UnSetInvulnerable(); bREFLECTIVE = FALSE; }
+		Goto Tele;
+	Tele:
+		GNIX AAAA 2 A_FadeOut(0.2,0);
+		TNT1 A 1 A_SetRenderStyle(0.0,STYLE_Translucent);
+		//GNIX A 0 A_StartSound("");   In case you want the blink to have a sound.
+		TNT1 AAAAAAAAAAAAAA 0 A_Wander();
+		TNT1 A 1;
+		GNIX AAAA 2 A_FadeIn(0.2);
+		GNIX A 2 { A_FaceTarget(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		Goto Missile+1;
+	Missile:
+		GNIX A 0 A_Jump(85,"Tele");
+		GNIX A 0 A_CheckSight("Chase");
+		GNIX K 8 A_FaceTarget();
+		GNIX KKKK 8 
+		{
+			A_FaceTarget();
+			if(left == TRUE)
+			{
+				A_SpawnProjectile("GFamiliarMissile",32,-20);
+				left = FALSE;
+			}
+			else
+			{
+				A_SpawnProjectile("GFamiliarMissile",32,20);
+				left = TRUE;			
+			}
+			A_StartSound("FamiliarFire",0);
+		}
+		Goto Chase;
+	Crash:
+	XDeath:
+		GNIX M 4 { A_Scream(); A_FaceTarget(); A_SetRenderStyle(0.95,STYLE_Translucent); }
+		GNIX M 1;
+		GNIX N 5 A_NoBlocking();
+		GNIX O 5 CA_FamSplortch();
+		Stop;
+	Death:
+		GNIX D 1 A_SetRenderStyle(0.95, STYLE_Translucent);
+		GNIX D 4 A_FaceTarget();
+		GNIX L 4;
+		GNIX L 1;
+		GNIX L 4 A_NoBlocking();
+		GNIX L 200 ;
+		Stop;
+	Death.Sacrifice:
+		TNT1 A 1 A_NoBlocking();
+		Stop;
+	Ice:
+		FNIX R 5 { A_FreezeDeath(); A_SetRenderStyle(0.95, STYLE_Translucent); }
+		FNIX R 1 A_FreezeDeathChunks();
+		Wait;
+	}
+	void CA_FamSpawnRock()
+		{
+		for( int rtid = 1337; rtid < 1342; rtid++ )
+			{ A_SpawnItemEx("FamiliarRockPiece",random(-4,4),random(-4,4),0,random(-2,2),random(-2,2),random(0,4),0,0,0,rtid); }
+		}
+		
+	void CA_FamSplortch()
+		{
+		A_SpawnItemEx("FamiliarSplotch",0,0,0,random(-4,4),random(-4,4),random(3,7),0,0,0,1339);
+		A_SpawnItemEx("FamiliarSplotch",0,0,0,random(-4,4),random(-4,4),random(3,7),0,0,0,1340);
+		}
+	
+	void Posses()
+	{	
+		BlockThingsIterator it = BlockThingsIterator.Create(self, 128);
+		while(it.Next())
+		{
+			let obj = it.thing;
+			int doit = Random(0, 100) + obj.SpawnHealth() / 100;
+			if(!poss && doit > 75 && obj.bISMONSTER && obj.health > 0 && obj.SpawnHealth() >= SpawnHealth() * 2 && !obj.CheckInventory("GFamiliarPosser", 1) && !InStateSequence(obj.curstate, obj.ResolveState("Spawn")))
+			{
+				if(!obj.bBOSS)
+				{
+					poss = TRUE;
+					obj.GiveInventory("GFamiliarPosser", 1);
+					obj.GiveInventory("GFamiliarStopper", 1);
+					SetStateLabel("Poss");
+				}
+				else
+				{
+					if(!self.master)				
+						self.master = obj;
+					if(self.master)
+					{
+						master.bBUDDHA = TRUE;
+						if(!master.CheckInventory("GFamiliarEmpower", 1))
+							master.GiveInventory("GFamiliarEmpower", 1);
+					}
+				}
+			}	
+		}
+	}
+	
+	override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
+	{
+		if(self.master)
+			master.bBUDDHA = FALSE;
+		super.Die(source, inflictor, 0, MeansOfDeath);
+	}
+	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		A_AttachLight("PurpleLight", DynamicLight.PointLight, "Purple", 52, 72);
+		poss = FALSE;
+		colour = "5500FF";
+	}
+	
+	override void PreMorph(Actor mo, bool current)
+	{
+		if(!current)
+		{
+			colour = "000000";
+		}
+	}
+	
+	override void PostUnMorph(Actor mo, bool current)
+	{
+		if(current)
+		{
+			colour = "5500FF"; 
+		}
+	}
+	
+	override bool CanResurrect(Actor other, bool passive)
+	{
+		if(!passive && other.SpawnHealth() >= SpawnHealth() * 1.5 && !other.CheckInventory("GFamiliarStopper", 1))
+		{
+			other.A_SpawnItemEx("FamiliarRess", 0, 0, 0, 0, 0, 0, 0, SXF_SETMASTER);
+			self.A_SpawnItemEx("FamiliarRess2", 0, 0, 0, 0, 0, 0, 0, SXF_SETMASTER);
+			other.GiveInventory("GFamiliarSpawner", 1);
+			other.GiveInventory("GFamiliarStopper", 1);  // <--- Comment this line out to allow Genie 
+			return TRUE;								 // to posses corpses repeatedly.
+		}
+		return FALSE;
+	}
+		
+	override void Tick()
+	{
+	if(!isFrozen())
+		{
+		super.Tick();
+		if(InStateSequence(self.Curstate, self.ResolveState("Chase")) || InStateSequence(self.Curstate, self.ResolveState("Missile")) || InStateSequence(self.Curstate, self.ResolveState("Tele")) || InStateSequence(self.Curstate, self.ResolveState("Respawn")) && GetAge() % 10 == 0)
+		{
+			A_SpawnParticleEx
+				(
+				"5500FF",
+				TexMan.CheckForTexture ("BURNA0"),
+				style: STYLE_Add,
+				flags: SPF_FULLBRIGHT|SPF_ROLL,
+				lifetime: Frandom(50, 70),
+				size: Frandom(4.0, 7.0),
+				angle: 0,
+				xoff: FRandom (radius * 0.75 ,-radius * 0.75),
+				yoff: FRandom (radius * 0.75 ,-radius * 0.75),
+				zoff: FRandom (40, 55),
+				velx: 0,
+				vely: 0,
+				velz: -0.1,
+				accelz: 0.1,
+				startalphaf: 1.25,
+				fadestepf: -0.002,
+				sizestep: -0.1,
+				startroll: 0,
+				rollvel: 0.5,
+				rollacc: 0
+				);
+		}
+		}
+	}
+ }
+ 
+Class GFamiliarMissile : FamiliarMissile
+{
+	Default
+	{
+	Speed 15;
+	Damage 4;
+	Radius 12;
+	Height 10;
+	RenderStyle "Normal";
+	Projectile;
+	Translation "231:239=164:185";
+	DeathSound "FamiliarFireExplode";
+	+BRIGHT
+	+SEEKERMISSILE
+	}
+	States
+	{
+	Spawn:
+		GNIF DDEE 1  
+		{
+			A_Weave(0, 3, 0.0, 1.0);
+			A_SeekerMissile(1, 2);
+		}
+		Loop;
+	Death:
+		GNIF FG 4 ;
+		GNIF HI 3 ;
+		Stop;
+	}
+}
+ 
+Class GFamiliarSpawner : Inventory
+{
+	Actor respawn;
+	
+	Default
+	{
+		Inventory.MaxAmount 1;
+	}
+	
+	override void AttachToOwner(Actor other)
+	{
+		super.AttachtoOwner(other);
+		if(owner)
+			owner.Speed += 5;
+			owner.health = owner.SpawnHealth() * 1.1;
+			owner.PainChance = 0;
+	}
+		
+	override void OwnerDied()
+	{
+		respawn = owner.Spawn("GFamiliar", owner.Vec3Offset(0, 0, 0));	
+		if(respawn)
+			respawn.SetStateLabel("Respawn");
+		super.OwnerDied();
+	}
+}
+
+Class GFamiliarPosser : Inventory
+{
+	Actor respawn;
+	
+	Default
+	{
+		Inventory.MaxAmount 1;
+		+INVENTORY.AUTOACTIVATE
+	}
+	
+	override void AttachToOwner(Actor other)
+	{
+		super.AttachtoOwner(other);
+		if(owner)
+		{
+			owner.Speed += 5;
+			owner.PainChance = owner.PainChance / 2;
+			owner.DamageFactor = owner.DamageFactor * 2;
+			owner.health = owner.SpawnHealth() * 1.5;
+			owner.Scale.x = owner.Scale.x+0.1;
+			owner.Scale.y = owner.Scale.y+0.1;
+			//owner.bALWAYSFAST = TRUE;
+		}
+	}
+	
+	/*override void DoEffect()
+	{
+		super.DoEffect();
+		if(owner && owner.health > 0 && GetAge() % (TICRATE * 10) == 0)
+			owner.A_DropItem("Familiar", -1, 10);
+	}*/
+		
+	override void OwnerDied()
+	{
+		respawn = owner.Spawn("GFamiliar", owner.Vec3Offset(0, 0, 0));	
+		if(respawn)
+			respawn.SetStateLabel("Respawn");
+		super.OwnerDied();
+	}
+	
+	override void Tick()
+	{
+		super.Tick();
+		if(!isFrozen())
+		{
+		if(owner && owner.health > 0)
+		{
+		owner.A_SpawnParticleEx
+		(
+			"Green",
+			TexMan.CheckForTexture("BURNA0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_ROLL,
+			lifetime: Frandom(50, 70),
+			size: Frandom(4.0, 7.0),
+			angle: 0,
+			xoff: FRandom (owner.radius * 0.75 ,-owner.radius * 0.75),
+			yoff: FRandom (owner.radius * 0.75 ,-owner.radius * 0.75),
+			zoff: FRandom (owner.height / 4, owner.height),
+			velx: 0,
+			vely: 0,
+			velz: -0.1,
+			accelz: 0.1,
+			startalphaf: 1.25,
+			fadestepf: -0.002,
+			sizestep: -0.1,
+			startroll: 0,
+			rollvel: 0.5,
+			rollacc: 0
+		);
+		}
+		}
+	}
+}
+
+Class GFamiliarEmpower : Inventory
+{
+	Actor respawn;
+	
+	Default
+	{
+		Inventory.MaxAmount 1;
+		+INVENTORY.AUTOACTIVATE
+	}
+			
+	override void Tick()
+	{
+		super.Tick();
+		if(!isFrozen())
+		{
+		if(owner && owner.health > 0 && owner.bBUDDHA)
+		{
+		owner.A_SpawnParticleEx
+		(
+			"PURPLE",
+			TexMan.CheckForTexture("BURNA0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_ROLL,
+			lifetime: Frandom(50, 70),
+			size: Frandom(4.0, 7.0),
+			angle: 0,
+			xoff: FRandom (owner.radius * 0.75 ,-owner.radius * 0.75),
+			yoff: FRandom (owner.radius * 0.75 ,-owner.radius * 0.75),
+			zoff: FRandom (owner.height / 4, owner.height),
+			velx: 0,
+			vely: 0,
+			velz: -0.1,
+			accelz: 0.1,
+			startalphaf: 1.25,
+			fadestepf: -0.002,
+			sizestep: -0.1,
+			startroll: 0,
+			rollvel: 0.5,
+			rollacc: 0
+		);
+		}
+		}
+	}
+}
+
+Class GFamiliarStopper : Inventory {}

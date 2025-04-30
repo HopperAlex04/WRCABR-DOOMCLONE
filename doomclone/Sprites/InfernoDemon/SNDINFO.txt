@@ -1,0 +1,25 @@
+Inferno/Alert	INFRALRT
+Inferno/Walk	INFRWALK
+Inferno/Die		INFRDEAD
+Inferno/Active	INFRACTV
+Apocalypse/Meteor COMETLNC
+Apocalypse/Death COMETEXP
+Meteor/Call DFATTACK
+weapons/firmfi dsfirmfi
+weapons/firex3 dsfirex3
+weapons/firbfi dsfirbfi
+weapons/hellex dshellex
+weapons/justfi dsjustfi
+monster/bomb FIREBALL
+monster/firebeamdeath IMPFIRE2
+monster/firebeamstart DARKFLAM
+$limit monster/firebeamstart 0
+pyro/explosion DSPIPEX1
+Glyph/Start FLAMESTR
+
+Infdem/see BE-SPOT1
+Infdem/active BE-GROWL
+Infdem/pain BE-PAIN1
+Infdem/death DYING
+
+KoraxStep               step//this is present in Hexen, but needs to be defined for Doom or Heretic

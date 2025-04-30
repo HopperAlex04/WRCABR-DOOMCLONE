@@ -1,0 +1,10 @@
+FamiliarSpawn FAMM01
+FamiliarActive FAMM02
+FamiliarPain FAMM03
+FamiliarDeath FAMM04
+FamiliarRevive FAMM05
+FamiliarCameBack FAMM06
+FamiliarFire impat2
+FamiliarFireExplode glbhit4
+
+GFamiliarPoss slave
